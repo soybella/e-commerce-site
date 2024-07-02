@@ -1,0 +1,66 @@
+main {
+  display: flex;
+}
+
+header {
+  display: flex;
+  width: 100%;
+}
+
+nav {
+  flex: 1;
+  border: 1px solid blue;
+}
+
+header img {
+  padding-inline-end: 3rem;
+}
+
+nav a {
+  padding-inline: 0.8rem;
+  text-decoration: none;
+  color: #69707d;
+  border: 1px solid red;
+}
+
+.account-details {
+  border: 1px solid black;
+}
+
+.product-information h1,
+.product-information h2 {
+  text-transform: uppercase;
+}
+
+.product-prices {
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.product-prices span {
+  border: 1px solid blue;
+  margin-inline-end: 0.5rem;
+}
+
+.font-size-discount {
+  font-size: 1.75rem;
+}
+
+.bg-black {
+  padding: 0.3rem 0.6rem;
+  background: #1d2026;
+  color: white;
+  border-radius: 5px;
+}
+
+.container-original-price {
+  margin-block-start: 1rem;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

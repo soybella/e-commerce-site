@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Isabella Lizarde | E-commerce product page</title>
+  </head>
+  <body>
+    <header>
+      <img src="./images/logo.svg" width="138" height="20" class=".productThumbnailMain"/>
+      <nav>
+        <a href="http://">Collections</a>
+        <a href="http://">Men</a>
+        <a href="http://">Women</a>
+        <a href="http://">About</a>
+        <a href="http://">Contact</a>
+        </nav>
+        <span class="account-details">
+          <img src="./images/icon-cart.svg" alt="" width="21" height="20" class=".navShoppingCart"/>
+          <img src="./images/image-avatar.png" alt="" width="50"/>
+        </span>
+    </header>
+    <hr />
+    <main>
+      <div class="product-images">
+        <img src="./images/image-product-1.jpg" alt="" width="445"/>
+        <span>
+          <img src="./images/image-product-1-thumbnail.jpg" alt="" width="88" class=".productThumbnail1"/>
+          <img src="./images/image-product-2-thumbnail.jpg" alt="" width="88" class=".productThumbnail2"/>
+          <img src="./images/image-product-3-thumbnail.jpg" alt="" width="88" class=".productThumbnail3"/>
+          <img src="./images/image-product-4-thumbnail.jpg" alt="" width="88" class=".productThumbnail4"/>
+        </span>
+      </div>
+      <section class="product-information">
+        <h1>
+          Sneaker Company 
+        </h1>
+        <h2>
+          Fall Limited Edition Sneakers 
+        </h2>
+        <p>
+          These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer
+          sole, they’ll withstand everything the weather can offer. 
+          <div class="product-prices">
+            <span class=".productDiscountPrice font-size-discount">$125.00</span>
+            <span class=".productDiscountPercentage bg-black">50%</span>
+            <div class=".productOriginalPrice container-original-price" style="text-decoration: line-through;">$250.00</div>
+          </div>
+        </p>
+        <div class="product-quantity">
+          <button>
+            <img src="./images/icon-minus.svg" alt="" class=".minusProduct">
+          </button>
+          <span>0</span>
+          <button>
+            <img src="./images/icon-plus.svg" alt="" class=".addProduct">
+          </button>
+        </div>
+        <button class="add-to-cart">
+          <img src="./images/icon-cart.svg" alt="" class=".addToCart"/>
+          Add to cart
+        </button>
+      </section>
+    </main>
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </footer>
+  </body>
+</html>
