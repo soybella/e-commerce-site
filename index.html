@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
 
@@ -17,18 +20,18 @@
   </head>
   <body>
     <header>
-      <img src="./images/logo.svg" width="138" height="20" class=".productThumbnailMain"/>
+      <img src="./images/logo.svg" width="138" height="20" class=".companyLogo company-logo"/>
       <nav>
         <a href="http://">Collections</a>
         <a href="http://">Men</a>
         <a href="http://">Women</a>
         <a href="http://">About</a>
         <a href="http://">Contact</a>
-        </nav>
-        <span class="account-details">
-          <img src="./images/icon-cart.svg" alt="" width="21" height="20" class=".navShoppingCart"/>
+      </nav>
+        <!-- <span class="account-details"> -->
+          <img src="./images/icon-cart-light.svg" alt="" width="21" class=".navShoppingCart nav-cart"/>
           <img src="./images/image-avatar.png" alt="" width="50"/>
-        </span>
+        <!-- </span> -->
     </header>
     <hr />
     <main>
@@ -41,35 +44,37 @@
           <img src="./images/image-product-4-thumbnail.jpg" alt="" width="88" class=".productThumbnail4"/>
         </span>
       </div>
-      <section class="product-information">
-        <h1>
+      <section class="product-details">
+        <h1 class="company-name">
           Sneaker Company 
         </h1>
-        <h2>
+        <h2 class="product-name">
           Fall Limited Edition Sneakers 
         </h2>
-        <p>
+        <p class="product-description">
           These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer
           sole, they’ll withstand everything the weather can offer. 
           <div class="product-prices">
-            <span class=".productDiscountPrice font-size-discount">$125.00</span>
-            <span class=".productDiscountPercentage bg-black">50%</span>
-            <div class=".productOriginalPrice container-original-price" style="text-decoration: line-through;">$250.00</div>
+            <span class=".productDiscountPrice discount-price">$125.00</span>
+            <span class=".productDiscountPercentage discount-percentage">50%</span>
+            <div class=".productOriginalPrice original-price" style="text-decoration: line-through;">$250.00</div>
           </div>
         </p>
-        <div class="product-quantity">
-          <button>
-            <img src="./images/icon-minus.svg" alt="" class=".minusProduct">
-          </button>
-          <span>0</span>
-          <button>
-            <img src="./images/icon-plus.svg" alt="" class=".addProduct">
+        <div class="product-add-to-cart">
+          <span class="product-quantity">
+            <button>
+              <img src="./images/icon-minus.svg" alt="" class=".minusProduct">
+            </button>
+            <span class=".numberOfProduct">0</span>
+            <button>
+              <img src="./images/icon-plus.svg" alt="" class=".addProduct">
+            </button>
+          </span>
+          <button class=".addToCart button-add-to-cart">
+            <img src="./images/icon-cart.svg" alt="" class=".addToCart"/>
+            Add to cart
           </button>
         </div>
-        <button class="add-to-cart">
-          <img src="./images/icon-cart.svg" alt="" class=".addToCart"/>
-          Add to cart
-        </button>
       </section>
     </main>
     <footer class="attribution">
