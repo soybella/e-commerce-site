@@ -1,28 +1,26 @@
 :root {
   --font-family: "Kumbh Sans", sans-serif;
   --primary-text-color: hsl(219, 9%, 45%);
+  --border-radius-large: 0.625rem;
+  --border-radius-small: 0.5rem;
 }
 
 html {
   box-sizing: border-box;
-  /* height: 100vh; */
 }
 
 body {
-  /* display: flex; */
-  max-inline-size: 70rem;
-  /* height: 740px; */
+  max-inline-size: 100vw;
   margin: auto;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* margin-block: 1rem; */
+  padding-inline: 2rem;
   border: 1px solid green;
   font-family: var(--font-family);
 }
 
 main {
   display: flex;
-  height: 100vh;
+  /* min-height: 100svh; */
+  padding-block: 5rem;
   align-items: center;
   justify-content: center;
   gap: 5rem;
@@ -30,38 +28,41 @@ main {
 
 header {
   display: flex;
-  width: 100%;
   align-items: center;
-  border: 1px solid red;
-  /* justify-content: center; */
-  /* margin-block-start: 1rem; */
+  padding-block-end: 1rem;
+  /* border: 1px solid red; */
+  /* border-block-end: 1px solid blue; */
+  border-block-end: 1px solid #e4e9f2;
 }
 
 nav {
   flex: 1;
-  /* width: 100%; */
-  /* justify-content: end; */
-  /* margin-inline-end: 0; */
   border: 1px solid blue;
 }
 
 header img {
-  /* padding-inline-end: 3rem; */
+  max-width: min-content;
   border: 1px solid orange;
 }
 
 nav a {
-  padding-inline: 0.8rem;
+  margin-inline: 0.8rem;
+  padding-block-end: 1.8rem;
+  border: 1px solid red;
   text-decoration: none;
   color: var(--primary-text-color);
-  border: 1px solid red;
+}
+
+nav a:hover {
+  border-block-end: 4px solid orange;
 }
 
 button {
-  border-radius: 10px;
+  border-radius: var(--border-radius-large);
 }
 
-button:hover {
+button:hover,
+img:hover {
   cursor: pointer;
 }
 
@@ -69,30 +70,14 @@ footer {
   border: 1px solid black;
 }
 
-hr {
-  /* font-weight: light; */
+/* hr {
   border: none;
   border: 0.5px solid #e4e9f2;
-}
-
-/* img {
-  border-radius: 10px;
 } */
 
 .account-details {
   border: 1px solid black;
-  /* margin-inline-start: 0; */
-  /* display: flex; */
-  /* margin: auto; */
-  /* block-size: auto; */
-  /* align-items: flex-end */
-  /* margin-inline: auto; */
 }
-
-/* .account-details img {
-  border: 1px solid orange;
-  margin-block: auto;
-} */
 
 .nav-cart,
 .company-logo {
@@ -101,33 +86,37 @@ hr {
 
 .product-images {
   max-width: 28rem;
-  /* border: 1px solid green; */
+  border: 1px solid green;
 }
 
 .product-images img {
-  /* display: grid; */
-  border-radius: 10px;
+  border-radius: var(--border-radius-large);
   border: 1px solid blue;
-  /* gap: 20px; */
 }
 
 .product-images span {
-  border: 1px solid red;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.75rem;
   margin-block-start: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid red;
+  gap: 1.75rem;
 }
+
+.product-thumbnail-small:hover {
+  opacity: 0.5;
+}
+
+/* .product-thumbnail-small:active {
+  border: 1px solid #ff7e1b;
+} */
 
 .product-details {
   border: 1px solid pink;
-  /* max-inline-size: 28rem; */
-  /* margin-block: auto; */
 }
 
 .company-name {
-  text-transform: uppercase;
   font-size: 0.8rem;
+  text-transform: uppercase;
   letter-spacing: 2px;
 }
 
@@ -140,18 +129,13 @@ hr {
   font-size: 2.75rem;
 }
 
-/* .product-description {
-  font-size: 1rem;
-} */
-
 .product-prices {
-  font-weight: bold;
   border: 1px solid black;
+  font-weight: bold;
 }
 
 .product-prices span {
   margin-inline-end: 0.5rem;
-  /* border: 1px solid blue; */
 }
 
 .discount-price {
@@ -162,7 +146,7 @@ hr {
   padding: 0.3rem 0.6rem;
   background: #1d2026;
   color: white;
-  border-radius: 8px;
+  border-radius: var(--border-radius-small);
 }
 
 .original-price {
@@ -172,16 +156,15 @@ hr {
 
 .product-quantity {
   display: grid;
+  min-width: 9.8rem;
+  min-height: 3.5rem;
   grid-template-columns: repeat(3, 1fr);
   margin-inline-end: 1rem;
   align-items: center;
-  min-width: 9.8rem;
-  min-height: 3.5rem;
   background: #f6f8fd;
   font-weight: bold;
   text-align: center;
-  border-radius: 7px;
-  /* border: 1px solid black; */
+  border-radius: var(--border-radius-small);
 }
 
 .product-quantity button {
@@ -189,9 +172,13 @@ hr {
   border: none;
 }
 
+.product-quantity img:hover {
+  opacity: 0.7;
+}
+
 .product-add-to-cart {
   display: flex;
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
 }
 
 .button-add-to-cart {
@@ -199,6 +186,10 @@ hr {
   background: #ff7e1b;
   border: none;
   font-weight: bold;
+}
+
+.button-add-to-cart:hover {
+  opacity: 0.7;
 }
 
 .button-add-to-cart img {
