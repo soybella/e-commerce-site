@@ -21,28 +21,40 @@
   <body>
     <header>
       <div>
-      <img src="./images/icon-menu.svg" height="24" class=".navMenuIcon nav-menu-icon" />
+      <button class=".navMenuIcon nav-menu-icon"></button>
       <img src="./images/logo.svg" height="24" class=".companyLogo company-logo"/>
       </div>
       <nav>
-        <a href="http://">Collections</a>
-        <a href="http://">Men</a>
-        <a href="http://">Women</a>
-        <a href="http://">About</a>
-        <a href="http://">Contact</a>
+          <a href="http://">Collections</a>
+          <a href="http://">Men</a>
+          <a href="http://">Women</a>
+          <a href="http://">About</a>
+          <a href="http://">Contact</a>
+        </div>
+      </nav>
+      <nav class="navbar-responsive hidden">
+        <div class="navbar-wrapper">
+          <button class="close-button"></button>
+          <a href="http://">Collections</a>
+          <a href="http://">Men</a>
+          <a href="http://">Women</a>
+          <a href="http://">About</a>
+          <a href="http://">Contact</a>
+        </div>
       </nav>
         <span class="account-details">
           <img src="./images/icon-cart-light.svg" alt="" width="68" height="24" class=".navShoppingCart nav-cart"/>
           <img src="./images/image-avatar.png" alt="" width="50" class="account-avatar"/>
         </span>
-         <div class="shopping-cart-open">
-          <p class="shopping-cart-header">Cart</p>
-          <div class="shopping-cart-items">
-            <p class="shopping-cart-empty-message">Your cart is empty.</p>
-          </div>
-         </div>
-    </header>
-    <main>
+      </header>
+      <main>
+      <div class="shopping-cart-open">
+       <p class="shopping-cart-header">Cart</p>
+        <div class="shopping-cart-items">
+          
+          <p class="shopping-cart-empty-message">Your cart is empty.</p>
+        </div>
+       </div>
       <div class="product-images">
         <button class="previous-button hidden"></button>
         <img src="./images/image-product-1.jpg" alt="" width="445" class=".productThumbnailMain product-thumbnail-main"/>
