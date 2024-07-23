@@ -7,6 +7,7 @@
   --dark-grey-accent: hsl(219, 35%, 92%);
   --light-grey-accent: hsl(223, 64%, 98%);
   --hover-transition: 150ms ease-in-out;
+  /*  create new root variable for all other colors used  */
 }
 
 html {
@@ -131,20 +132,20 @@ footer {
   align-items: center;
 }
 
-.checkout-button {
+.shopping-cart-checkout-button {
   width: 100%;
   min-height: 3.25rem;
   background-color: var(--orange-accent);
   font-weight: bold;
 }
 
-.checkout-button:hover {
+.shopping-cart-checkout-button:hover {
   background-color: #ffab6a;
 }
 
-.delete-product {
-  width: 14px;
-  height: 16px;
+.shopping-cart-basket-filled .delete-product {
+  min-width: 0.9;
+  min-height: 1rem;
   background-image: url("./images/icon-delete.svg");
   border-radius: 0;
 }
@@ -175,21 +176,21 @@ footer {
   font-weight: normal;
 }
 
-.shopping-cart-basket-filled span {
-  margin-inline-end: 1.5px;
-}
-
-.product-thumbnail-cart {
-  display: flex;
-  width: 50px;
-  height: 50px;
-  align-items: center;
-  border-radius: var(--border-radius-small);
-}
-
 .shopping-cart-basket-filled .product-total-price {
   font-size: 1rem;
   color: #1d2026;
+}
+
+.shopping-cart-basket-filled span {
+  margin-inline-end: 0.1rem;
+}
+
+.shopping-cart-basket-filled .product-thumbnail-cart {
+  display: flex;
+  max-width: 3.1rem;
+  max-height: 3.1rem;
+  align-items: center;
+  border-radius: var(--border-radius-small);
 }
 
 .shopping-cart-header {
@@ -390,8 +391,8 @@ footer {
 
 .light-box .close-button {
   display: flex;
-  width: 20px;
-  height: 20px;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
   margin-inline-start: auto;
   margin-block-end: 1rem;
   align-items: center;
@@ -410,20 +411,23 @@ footer {
   position: relative;
 }
 
-.light-box .previous-button {
+.light-box .arrow-button {
   position: absolute;
-  width: 56px;
-  height: 56px;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
   top: 50%;
-  right: 95%;
   transform: translateY(-50%);
   align-items: center;
   justify-content: center;
-  background-image: url("./images/icon-previous.svg");
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
   border: none;
+}
+
+.light-box .previous-button {
+  right: 95%;
+  background-image: url("./images/icon-previous.svg");
 }
 
 .previous-button:hover {
@@ -431,19 +435,8 @@ footer {
 }
 
 .light-box .next-button {
-  position: absolute;
-  width: 56px;
-  height: 56px;
-  top: 50%;
   left: 95%;
-  transform: translateY(-50%);
-  align-items: center;
-  justify-content: center;
   background-image: url("./images/icon-next.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 50%;
-  border: none;
 }
 
 .next-button:hover {
@@ -494,7 +487,7 @@ footer {
   .navbar-wrapper {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    min-width: 60%;
     padding-block-end: 5rem;
     height: 100%;
     background-color: white;
@@ -502,13 +495,13 @@ footer {
 
   .navbar-responsive .close-button {
     display: flex;
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 1.6rem 0rem 3.1rem 1rem;
     background-image: url("./images/icon-close-navbar.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
-    margin: 25px 0px 50px 16px;
   }
 
   .navbar-responsive .close-button:hover {
@@ -533,8 +526,8 @@ footer {
 
   .nav-menu-icon {
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 1.5rem;
+    width: 1.5rem;
     background-image: url("./images/icon-menu.svg");
     background-repeat: no-repeat;
     background-color: transparent;
@@ -591,38 +584,29 @@ footer {
     margin-inline: 4rem;
   }
 
-  main .previous-button {
+  main .arrow-button {
     display: block;
     position: absolute;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
     top: 50%;
-    right: 85%;
     transform: translateY(-50%);
     align-items: center;
     justify-content: center;
-    background-image: url("./images/icon-previous.svg");
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
     border: none;
   }
 
+  main .previous-button {
+    right: 85%;
+    background-image: url("./images/icon-previous.svg");
+  }
+
   main .next-button {
-    display: block;
-    position: absolute;
-    min-width: 40px;
-    min-height: 40px;
-    top: 50%;
     left: 85%;
-    transform: translateY(-50%);
-    align-items: center;
-    justify-content: center;
     background-image: url("./images/icon-next.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
-    border: none;
   }
 
   .shopping-cart-open {
@@ -684,14 +668,14 @@ footer {
 
 @media (width > 31.25rem) {
   main .previous-button {
-    min-width: 56px;
-    min-height: 56px;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
     right: 95%;
   }
 
   main .next-button {
-    min-width: 56px;
-    min-height: 56px;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
     left: 95%;
   }
 }
