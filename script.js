@@ -1,3 +1,41 @@
+const productThumbnailSmall = document.querySelectorAll(
+  "main .product-small-wrapper"
+);
+const previousButton = document.querySelector(".previous-button");
+const nextButton = document.querySelector(".next-button");
+const closeNavBar = document.querySelector("#navbar-close-button");
+const shoppingCartButton = document.querySelector(".nav-cart");
+const navBarIcon = document.querySelector(".nav-menu-icon");
+let currentPhotoIndex = 0;
+
+closeNavBar.addEventListener("click", handleCloseNavBar);
+navBarIcon.addEventListener("click", handleNavBarIcon);
+shoppingCartButton.addEventListener("click", handleShoppingCartButton);
+previousButton.addEventListener("click", () => {
+  if (currentPhotoIndex > 0) {
+    currentPhotoIndex--;
+    updatePhoto();
+  }
+});
+
+nextButton.addEventListener("click", () => {
+  if (currentPhotoIndex < productThumbnailSmall.length - 1) {
+    currentPhotoIndex++;
+    updatePhoto();
+  }
+});
+
+productThumbnailSmall.forEach((thumbnail, index) => {
+  thumbnail.addEventListener("click", () => {
+    currentPhotoIndex = index;
+    updatePhoto();
+  });
+});
+
+productThumbnailSmall.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", handleProductThumbnailSmall);
+});
+
 function handleShoppingCartButton() {
   let openCart = document.querySelector(".shopping-cart-open");
   openCart.classList.toggle("hidden");
@@ -14,7 +52,6 @@ function handleCloseNavBar() {
 }
 
 function handleProductThumbnailSmall(event) {
-  console.log("Thumbnail clicked");
   let clickedThumbnail = event.target;
   let newMainThumbnail = clickedThumbnail.getAttribute("data-large-src");
   let productThumbnailMain = document.querySelector(".product-thumbnail-main");
@@ -24,16 +61,31 @@ function handleProductThumbnailSmall(event) {
   }
 }
 
-let productThumbnailSmall = document.querySelectorAll(".product-small-wrapper");
-productThumbnailSmall.forEach((thumbnail) => {
-  thumbnail.addEventListener("click", handleProductThumbnailSmall);
-});
+function updatePhoto() {
+  let productThumbnailMain = document.querySelector(".product-thumbnail-main");
+  let newPhotoSrc =
+    productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
+  let photos = document.querySelectorAll(".photo");
+  let newMainPhoto = Array.from(photos).find(
+    (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
+  );
 
-let closeNavBar = document.querySelector("#navbar-close-button");
-closeNavBar.addEventListener("click", handleCloseNavBar);
+  if (newMainPhoto) {
+    productThumbnailMain.src = newPhotoSrc;
+  } else {
+    return newPhotoSrc;
+  }
 
-let navBarIcon = document.querySelector(".nav-menu-icon");
-navBarIcon.addEventListener("click", handleNavBarIcon);
+  if (currentPhotoIndex === 0) {
+    previousButton.disabled = true;
+  } else {
+    previousButton.disabled = false;
+  }
 
-let shoppingCartButton = document.querySelector(".nav-cart");
-shoppingCartButton.addEventListener("click", handleShoppingCartButton);
+  if (currentPhotoIndex === productThumbnailSmall.length - 1) {
+    nextButton.disabled = true;
+  } else {
+    nextButton.disabled = false;
+  }
+}
+updatePhoto();
