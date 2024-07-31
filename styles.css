@@ -313,7 +313,6 @@ footer {
 .product-quantity button {
   display: flex;
   max-inline-size: 100%;
-  /* height: 100%; */
   align-items: center;
   justify-content: center;
   background: var(--light-grey-accent-color);
@@ -655,6 +654,14 @@ footer {
     justify-content: center;
     gap: 1.5rem;
     transform: translateY(20%);
+  }
+
+  .light-box {
+    display: none;
+  }
+
+  .product-thumbnail-main:hover {
+    cursor: auto;
   }
 }
 
