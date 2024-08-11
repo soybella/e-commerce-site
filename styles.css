@@ -298,6 +298,27 @@ footer {
   color: var(--primary-text-color);
 }
 
+.quantity-button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--light-grey-accent-color);
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.minus-product-button {
+  background-image: url("./images/icon-minus.svg");
+}
+
+.add-product-button {
+  background-image: url("./images/icon-plus.svg");
+}
+
+.add-product-button:hover,
+.minus-product-button:hover {
+  opacity: 0.7;
+}
+
 .product-quantity {
   display: grid;
   min-inline-size: 30%;
@@ -310,16 +331,8 @@ footer {
   box-shadow: var(--box-shadow-small);
 }
 
-.product-quantity button {
-  display: flex;
-  max-inline-size: 100%;
-  align-items: center;
-  justify-content: center;
-  background: var(--light-grey-accent-color);
-}
-
-.product-quantity img:hover {
-  opacity: 0.7;
+.product-quantity > * {
+  margin: auto;
 }
 
 .product-add-to-cart {
@@ -337,6 +350,7 @@ footer {
   font-weight: bold;
   box-shadow: var(--box-shadow-small);
   white-space: nowrap;
+  color: black;
 }
 
 .button-add-to-cart:hover {

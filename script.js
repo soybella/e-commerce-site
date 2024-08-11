@@ -1,4 +1,4 @@
-const productThumbnailSmall = document.querySelectorAll(
+let productThumbnailSmall = document.querySelectorAll(
   "main .product-small-wrapper"
 );
 let productThumbnailSmallLightBox = document.querySelectorAll(
@@ -20,11 +20,7 @@ let currentPhotoIndex = 0;
 closeNavBar.addEventListener("click", handleCloseNavBar);
 navBarIcon.addEventListener("click", handleNavBarIcon);
 shoppingCartButton.addEventListener("click", handleShoppingCartButton);
-// Figure out why this is not working
-// productThumbnailSmallLightBox.addEventListener(
-//   "click",
-//   handleProductThumbnailSmall
-// );
+// next do shopping cart add to cart and quantity functionality
 
 closeLightBox.addEventListener("click", () => {
   displayLightBox.classList.add("hidden");
@@ -33,8 +29,6 @@ closeLightBox.addEventListener("click", () => {
 function handleThumbnailClick() {
   displayLightBox.classList.remove("hidden");
 }
-
-//  NEXT, IF MAIN THUMBNAIL IS CLICKED, LIGHT BOX SHOULD SHOW THAT IMAGE AS THE MAIN WHEN CLICKED
 
 function checkScreenWidth() {
   if (window.innerWidth >= 768) {
@@ -47,19 +41,25 @@ checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
 
 previousButton.addEventListener("click", () => {
+  console.log("previous button");
+  console.log(currentPhotoIndex);
   if (currentPhotoIndex > 0) {
     currentPhotoIndex--;
     updatePhoto();
   }
 });
 
+// Figure out why the photos in small screen sizes wont change when pressing next and previous buttons
 nextButton.addEventListener("click", () => {
+  console.log("next button");
+  console.log(currentPhotoIndex);
   if (currentPhotoIndex < productThumbnailSmall.length - 1) {
     currentPhotoIndex++;
-    // nextButton.disabled = true;
     updatePhoto();
   }
 });
+
+// Make click function for lightbox thumbnails
 
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
@@ -124,31 +124,80 @@ function handleProductThumbnailSmallLightBox(event) {
   }
 }
 
+// function updatePhotoLightBox() {
+//   let photosLightBox = document.querySelectorAll(".photo-light-box");
+
+//   let newPhotoSrcLightBox =
+//     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
+//       "data-large-src"
+//     );
+
+//   let newMainPhotoLightBox = Array.from(photosLightBox).find(
+//     (photo) => photo.getAttribute("data-large-src") === newPhotoSrcLightBox
+//   );
+
+//   if (newPhotoSrcLightBox) {
+//     productThumbnailMainLightbox.src = newMainPhotoLightBox;
+//   } else {
+//     return newPhotoSrcLightBox;
+//   }
+
+//   if (currentPhotoIndex === 0) {
+//     previousButton.disabled = true;
+//   } else {
+//     previousButton.disabled = false;
+//   }
+
+//   if (currentPhotoIndex === 4) {
+//     nextButton.disabled = true;
+//   } else {
+//     nextButton.disabled = false;
+//   }
+// }
+// updatePhotoLightBox();
+
 function updatePhoto() {
-  let newPhotoSrc =
-    productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
+  if (productThumbnailSmall) {
+    console.log("main thumbnail");
+    let newPhotoSrc =
+      productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
+    let photos = document.querySelectorAll(".photo");
+    let newMainPhoto = Array.from(photos).find(
+      (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
+    );
+    if (newMainPhoto) {
+      productThumbnailMain.src = newPhotoSrc;
+    }
+  } else {
+    console.log("lightbox thumbnail");
+  }
+
+  //   let newPhotoSrc =
+  //     productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
 
   let newPhotoSrcLightBox =
     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
       "data-large-src"
     );
 
-  let photos = document.querySelectorAll(".photo");
+  //   let photos = document.querySelectorAll(".photo");
   let photosLightBox = document.querySelectorAll(".photo-light-box");
 
-  let newMainPhoto = Array.from(photos).find(
-    (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
-  );
+  //   let newMainPhoto = Array.from(photos).find(
+  //     (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
+  //   );
 
   let newMainPhotoLightBox = Array.from(photosLightBox).find(
     (photo) => photo.getAttribute("data-large-src") === newPhotoSrcLightBox
   );
 
-  if (newMainPhoto) {
-    productThumbnailMainLightbox.src = newMainPhotoLightBox;
-  } else {
-    return newPhotoSrc;
-  }
+  //   if (newMainPhoto) {
+  // productThumbnailMain.src = newPhotoSrc;
+  // productThumbnailMainLightbox.src = newMainPhotoLightBox;
+  //   } else {
+  // productThumbnailMainLightbox.src = newMainPhotoLightBox;
+  // return newPhotoSrc;
+  //   }
 
   if (currentPhotoIndex === 0) {
     previousButton.disabled = true;
