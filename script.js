@@ -1,9 +1,9 @@
-let productThumbnailSmall = document.querySelectorAll(
-  "main .product-small-wrapper"
-);
-let productThumbnailSmallLightBox = document.querySelectorAll(
-  "section .product-small-wrapper"
-);
+let productThumbnailSmall = document.querySelectorAll(".photo");
+
+let productThumbnail = document.querySelectorAll(".product-small-wrapper");
+
+let productThumbnailSmallLightBox =
+  document.querySelectorAll(".photo-light-box");
 const previousButton = document.querySelector(".previous-button");
 const nextButton = document.querySelector(".next-button");
 const closeNavBar = document.querySelector("#navbar-close-button");
@@ -41,8 +41,8 @@ checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
 
 previousButton.addEventListener("click", () => {
-  console.log("previous button");
-  console.log(currentPhotoIndex);
+  //   console.log("previous button");
+  //   console.log(currentPhotoIndex);
   if (currentPhotoIndex > 0) {
     currentPhotoIndex--;
     updatePhoto();
@@ -51,8 +51,8 @@ previousButton.addEventListener("click", () => {
 
 // Figure out why the photos in small screen sizes wont change when pressing next and previous buttons
 nextButton.addEventListener("click", () => {
-  console.log("next button");
-  console.log(currentPhotoIndex);
+  //   console.log("next button");
+  //   console.log(currentPhotoIndex);
   if (currentPhotoIndex < productThumbnailSmall.length - 1) {
     currentPhotoIndex++;
     updatePhoto();
@@ -60,18 +60,19 @@ nextButton.addEventListener("click", () => {
 });
 
 // Make click function for lightbox thumbnails
-
-productThumbnailSmall.forEach((thumbnail, index) => {
-  thumbnail.addEventListener("click", () => {
-    currentPhotoIndex = index;
-    updatePhoto();
-  });
-});
-
-productThumbnailSmallLightBox.forEach((thumbnail, index) => {
-  thumbnail.addEventListener("click", () => {
-    currentPhotoIndex = index;
-    updatePhoto();
+productThumbnail.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    if (button.classList.contains("photo")) {
+      console.log("main thumbnail");
+      console.log(currentPhotoIndex);
+      currentPhotoIndex = index;
+      updatePhoto();
+    } else {
+      console.log("lightbox thumbnail");
+      console.log(currentPhotoIndex);
+      currentPhotoIndex = index;
+      updatePhotoLightBox();
+    }
   });
 });
 
@@ -97,15 +98,12 @@ function handleCloseNavBar() {
   let responsiveNavBar = document.querySelector(".navbar-responsive");
   responsiveNavBar.style.display = "none";
 }
-// if product thumbnail small has class of .light-box choose that variable instead
 
 function handleProductThumbnailSmall(event) {
   let clickedThumbnail = event.target;
   let newMainThumbnail = clickedThumbnail.getAttribute("data-large-src");
   let newMainThumbnailLightBox =
     clickedThumbnail.getAttribute("data-large-src");
-  //   console.log(newMainThumbnailLightBox);
-  //   let productThumbnailMain = document.querySelector(".product-thumbnail-main");
 
   if (productThumbnailMain && newMainThumbnail) {
     productThumbnailMain.src = newMainThumbnail;
@@ -115,7 +113,6 @@ function handleProductThumbnailSmall(event) {
 
 function handleProductThumbnailSmallLightBox(event) {
   let clickedThumbnail = event.target;
-
   let newMainThumbnailLightBox =
     clickedThumbnail.getAttribute("data-large-src");
 
@@ -124,80 +121,23 @@ function handleProductThumbnailSmallLightBox(event) {
   }
 }
 
-// function updatePhotoLightBox() {
-//   let photosLightBox = document.querySelectorAll(".photo-light-box");
-
-//   let newPhotoSrcLightBox =
-//     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
-//       "data-large-src"
-//     );
-
-//   let newMainPhotoLightBox = Array.from(photosLightBox).find(
-//     (photo) => photo.getAttribute("data-large-src") === newPhotoSrcLightBox
-//   );
-
-//   if (newPhotoSrcLightBox) {
-//     productThumbnailMainLightbox.src = newMainPhotoLightBox;
-//   } else {
-//     return newPhotoSrcLightBox;
-//   }
-
-//   if (currentPhotoIndex === 0) {
-//     previousButton.disabled = true;
-//   } else {
-//     previousButton.disabled = false;
-//   }
-
-//   if (currentPhotoIndex === 4) {
-//     nextButton.disabled = true;
-//   } else {
-//     nextButton.disabled = false;
-//   }
-// }
-// updatePhotoLightBox();
-
-function updatePhoto() {
-  if (productThumbnailSmall) {
-    console.log("main thumbnail");
-    let newPhotoSrc =
-      productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
-    let photos = document.querySelectorAll(".photo");
-    let newMainPhoto = Array.from(photos).find(
-      (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
-    );
-    if (newMainPhoto) {
-      productThumbnailMain.src = newPhotoSrc;
-    }
-  } else {
-    console.log("lightbox thumbnail");
-  }
-
-  //   let newPhotoSrc =
-  //     productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
+function updatePhotoLightBox() {
+  let photosLightBox = document.querySelectorAll(".photo-light-box");
 
   let newPhotoSrcLightBox =
     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
       "data-large-src"
     );
 
-  //   let photos = document.querySelectorAll(".photo");
-  let photosLightBox = document.querySelectorAll(".photo-light-box");
-
-  //   let newMainPhoto = Array.from(photos).find(
-  //     (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
-  //   );
-
   let newMainPhotoLightBox = Array.from(photosLightBox).find(
     (photo) => photo.getAttribute("data-large-src") === newPhotoSrcLightBox
   );
 
-  //   if (newMainPhoto) {
-  // productThumbnailMain.src = newPhotoSrc;
-  // productThumbnailMainLightbox.src = newMainPhotoLightBox;
-  //   } else {
-  // productThumbnailMainLightbox.src = newMainPhotoLightBox;
-  // return newPhotoSrc;
-  //   }
+  if (newPhotoSrcLightBox) {
+    productThumbnailMainLightbox.src = newMainPhotoLightBox;
+  } else {
+    return newPhotoSrcLightBox;
+  }
 
   if (currentPhotoIndex === 0) {
     previousButton.disabled = true;
@@ -205,7 +145,37 @@ function updatePhoto() {
     previousButton.disabled = false;
   }
 
-  if (currentPhotoIndex === 4) {
+  if (currentPhotoIndex === photosLightBox.length - 1) {
+    nextButton.disabled = true;
+  } else {
+    nextButton.disabled = false;
+  }
+}
+updatePhotoLightBox();
+
+function updatePhoto() {
+  let newPhotoSrc =
+    productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
+
+  let photos = document.querySelectorAll(".photo");
+
+  let newMainPhoto = Array.from(photos).find(
+    (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
+  );
+
+  if (newMainPhoto) {
+    productThumbnailMain.src = newPhotoSrc;
+  } else {
+    return newPhotoSrc;
+  }
+
+  if (currentPhotoIndex === 0) {
+    previousButton.disabled = true;
+  } else {
+    previousButton.disabled = false;
+  }
+
+  if (currentPhotoIndex === photos.length - 1) {
     nextButton.disabled = true;
   } else {
     nextButton.disabled = false;
