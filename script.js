@@ -4,8 +4,8 @@ let productThumbnail = document.querySelectorAll(".product-small-wrapper");
 
 let productThumbnailSmallLightBox =
   document.querySelectorAll(".photo-light-box");
-const previousButton = document.querySelector(".previous-button");
-const nextButton = document.querySelector(".next-button");
+const previousButton = document.querySelectorAll(".previous-button");
+const nextButton = document.querySelectorAll(".next-button");
 const closeNavBar = document.querySelector("#navbar-close-button");
 const shoppingCartButton = document.querySelector(".nav-cart");
 const navBarIcon = document.querySelector(".nav-menu-icon");
@@ -21,7 +21,7 @@ closeNavBar.addEventListener("click", handleCloseNavBar);
 navBarIcon.addEventListener("click", handleNavBarIcon);
 shoppingCartButton.addEventListener("click", handleShoppingCartButton);
 // next do shopping cart add to cart and quantity functionality
-
+//  next fix arrow button functionality for light box
 closeLightBox.addEventListener("click", () => {
   displayLightBox.classList.add("hidden");
 });
@@ -40,23 +40,59 @@ function checkScreenWidth() {
 checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
 
-previousButton.addEventListener("click", () => {
-  //   console.log("previous button");
-  //   console.log(currentPhotoIndex);
-  if (currentPhotoIndex > 0) {
-    currentPhotoIndex--;
-    updatePhoto();
-  }
+//  figure out how to make light box arrow buttons change only light box images
+previousButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (
+      currentPhotoIndex > 0 &&
+      button.classList.contains("main-previous-button")
+    ) {
+      console.log("main previous button");
+      console.log(currentPhotoIndex);
+      currentPhotoIndex--;
+      updatePhoto();
+    } else {
+      if (
+        currentPhotoIndex > 0 &&
+        button.classList.contains("light-box-previous")
+      ) {
+        console.log("light-box previous button");
+        console.log(currentPhotoIndex);
+        currentPhotoIndex--;
+        updatePhotoLightBox(); // fix whats going on here
+      }
+    }
+  });
 });
 
-// Figure out why the photos in small screen sizes wont change when pressing next and previous buttons
-nextButton.addEventListener("click", () => {
+nextButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    // if (currentPhotoIndex < productThumbnailSmall.length - 1) {
+    //   currentPhotoIndex++;
+    //   updatePhoto();
+    // }
+    if (
+      currentPhotoIndex < productThumbnailSmall.length - 1 &&
+      button.classList.contains("main-next-button")
+    ) {
+      console.log("main next button");
+      console.log(currentPhotoIndex);
+      currentPhotoIndex++;
+      updatePhoto();
+    } else {
+      if (
+        currentPhotoIndex < productThumbnailSmall.length - 1 &&
+        button.classList.contains("light-box-next")
+      ) {
+        console.log("light-box next button"); // why isnt this working after i click on a light box thumbnail
+        console.log(currentPhotoIndex);
+        currentPhotoIndex++;
+        updatePhotoLightBox(); // fix whats going on here
+      }
+    }
+  });
   //   console.log("next button");
   //   console.log(currentPhotoIndex);
-  if (currentPhotoIndex < productThumbnailSmall.length - 1) {
-    currentPhotoIndex++;
-    updatePhoto();
-  }
 });
 
 // Make click function for lightbox thumbnails
@@ -124,17 +160,24 @@ function handleProductThumbnailSmallLightBox(event) {
 function updatePhotoLightBox() {
   let photosLightBox = document.querySelectorAll(".photo-light-box");
 
+  console.log(photosLightBox);
+
   let newPhotoSrcLightBox =
     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
       "data-large-src"
     );
 
+  // fix here
+  console.log(newPhotoSrcLightBox);
+
   let newMainPhotoLightBox = Array.from(photosLightBox).find(
     (photo) => photo.getAttribute("data-large-src") === newPhotoSrcLightBox
   );
 
+  console.log(newMainPhotoLightBox);
+
   if (newPhotoSrcLightBox) {
-    productThumbnailMainLightbox.src = newMainPhotoLightBox;
+    productThumbnailMainLightbox.src = newPhotoSrcLightBox;
   } else {
     return newPhotoSrcLightBox;
   }
