@@ -81,13 +81,13 @@ nextButton.forEach((button) => {
       updatePhoto();
     } else {
       if (
-        currentPhotoIndex < productThumbnailSmall.length - 1 &&
+        currentPhotoIndex < productThumbnailSmallLightBox.length - 1 &&
         button.classList.contains("light-box-next")
       ) {
         console.log("light-box next button"); // why isnt this working after i click on a light box thumbnail
         console.log(currentPhotoIndex);
         currentPhotoIndex++;
-        updatePhotoLightBox(); // fix whats going on here
+        updatePhotoLightBox();
       }
     }
   });
@@ -103,7 +103,7 @@ productThumbnail.forEach((button, index) => {
       console.log(currentPhotoIndex);
       currentPhotoIndex = index;
       updatePhoto();
-    } else {
+    } else if (button.classList.contains("photo-light-box")) {
       console.log("lightbox thumbnail");
       console.log(currentPhotoIndex);
       currentPhotoIndex = index;
@@ -158,28 +158,32 @@ function handleProductThumbnailSmallLightBox(event) {
 }
 
 function updatePhotoLightBox() {
-  let photosLightBox = document.querySelectorAll(".photo-light-box");
-
-  console.log(photosLightBox);
-
   let newPhotoSrcLightBox =
     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
       "data-large-src"
     );
+  //   console.log(newPhotoSrcLightBox);
+
+  let photosLightBox = document.querySelectorAll(".photo-light-box");
+
+  //   console.log(photosLightBox);
 
   // fix here
-  console.log(newPhotoSrcLightBox);
 
+  //   IS THIS GRABBING DATA LARGE SRC CORRECTLY?
   let newMainPhotoLightBox = Array.from(photosLightBox).find(
     (photo) => photo.getAttribute("data-large-src") === newPhotoSrcLightBox
   );
 
   console.log(newMainPhotoLightBox);
 
-  if (newPhotoSrcLightBox) {
+  if (newMainPhotoLightBox) {
     productThumbnailMainLightbox.src = newPhotoSrcLightBox;
+    // console.log(newMainPhotoLightBox);
+    // productThumbnailMainLightbox.src = newMainPhotoLightBox;
   } else {
-    return newPhotoSrcLightBox;
+    console.log("Not working");
+    // return newPhotoSrcLightBox;
   }
 
   if (currentPhotoIndex === 0) {
