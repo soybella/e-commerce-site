@@ -1,34 +1,82 @@
+let currentPhotoIndex = 0;
+let closeNavBar = document.querySelector("#navbar-close-button");
+let shoppingCartButton = document.querySelector(".nav-cart");
+let navBarIcon = document.querySelector(".nav-menu-icon");
 let productThumbnailSmall = document.querySelectorAll(".photo");
-
-let productThumbnail = document.querySelectorAll(".product-small-wrapper");
-
 let productThumbnailSmallLightBox =
   document.querySelectorAll(".photo-light-box");
-const previousButton = document.querySelectorAll(".previous-button");
-const nextButton = document.querySelectorAll(".next-button");
-const closeNavBar = document.querySelector("#navbar-close-button");
-const shoppingCartButton = document.querySelector(".nav-cart");
-const navBarIcon = document.querySelector(".nav-menu-icon");
-let displayLightBox = document.querySelector(".light-box");
-let closeLightBox = document.querySelector("#light-box-close-button");
 let productThumbnailMain = document.querySelector(".product-thumbnail-main");
 let productThumbnailMainLightbox = document.querySelector(
   ".light-box .product-thumbnail-main"
 );
-let currentPhotoIndex = 0;
+let previousButtonMain = document.querySelector(".main-previous-button");
+let nextButtonMain = document.querySelector(".main-next-button");
+let previousButtonLightBox = document.querySelector(".light-box-previous");
+let nextButtonLightBox = document.querySelector(".light-box-next");
+let displayLightBox = document.querySelector(".light-box");
+let closeLightBox = document.querySelector("#light-box-close-button");
 
-closeNavBar.addEventListener("click", handleCloseNavBar);
-navBarIcon.addEventListener("click", handleNavBarIcon);
-shoppingCartButton.addEventListener("click", handleShoppingCartButton);
-// next do shopping cart add to cart and quantity functionality
-//  next fix arrow button functionality for light box
+// Event listener for main thumbnail
+productThumbnailSmall.forEach((thumbnail, index) => {
+  thumbnail.addEventListener("click", () => {
+    currentPhotoIndex = index;
+    updateMainPhoto();
+  });
+});
+
+// Event listener for lightbox thumbnails
+productThumbnailSmallLightBox.forEach((thumbnail, index) => {
+  thumbnail.addEventListener("click", () => {
+    currentPhotoIndex = index;
+    updateLightboxPhoto();
+  });
+});
+
+// Update main photo when navigating
+previousButtonMain.addEventListener("click", () => {
+  if (currentPhotoIndex > 0) {
+    currentPhotoIndex--;
+    updateMainPhoto();
+  }
+});
+
+nextButtonMain.addEventListener("click", () => {
+  if (currentPhotoIndex < productThumbnailSmall.length - 1) {
+    currentPhotoIndex++;
+    updateMainPhoto();
+  }
+});
+
+// Update lightbox photo when navigating
+previousButtonLightBox.addEventListener("click", () => {
+  if (currentPhotoIndex > 0) {
+    currentPhotoIndex--;
+    updateLightboxPhoto();
+  }
+});
+
+nextButtonLightBox.addEventListener("click", () => {
+  if (currentPhotoIndex < productThumbnailSmallLightBox.length - 1) {
+    currentPhotoIndex++;
+    updateLightboxPhoto();
+  }
+});
+
 closeLightBox.addEventListener("click", () => {
   displayLightBox.classList.add("hidden");
 });
 
-function handleThumbnailClick() {
-  displayLightBox.classList.remove("hidden");
-}
+productThumbnailSmall.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", handleProductThumbnailSmall);
+});
+
+productThumbnailSmallLightBox.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", handleProductThumbnailSmallLightBox);
+});
+
+closeNavBar.addEventListener("click", handleCloseNavBar);
+navBarIcon.addEventListener("click", handleNavBarIcon);
+shoppingCartButton.addEventListener("click", handleShoppingCartButton);
 
 function checkScreenWidth() {
   if (window.innerWidth >= 768) {
@@ -39,86 +87,6 @@ function checkScreenWidth() {
 }
 checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
-
-//  figure out how to make light box arrow buttons change only light box images
-previousButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (
-      currentPhotoIndex > 0 &&
-      button.classList.contains("main-previous-button")
-    ) {
-      console.log("main previous button");
-      console.log(currentPhotoIndex);
-      currentPhotoIndex--;
-      updatePhoto();
-    } else {
-      if (
-        currentPhotoIndex > 0 &&
-        button.classList.contains("light-box-previous")
-      ) {
-        console.log("light-box previous button");
-        console.log(currentPhotoIndex);
-        currentPhotoIndex--;
-        updatePhotoLightBox(); // fix whats going on here
-      }
-    }
-  });
-});
-
-nextButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    // if (currentPhotoIndex < productThumbnailSmall.length - 1) {
-    //   currentPhotoIndex++;
-    //   updatePhoto();
-    // }
-    if (
-      currentPhotoIndex < productThumbnailSmall.length - 1 &&
-      button.classList.contains("main-next-button")
-    ) {
-      console.log("main next button");
-      console.log(currentPhotoIndex);
-      currentPhotoIndex++;
-      updatePhoto();
-    } else {
-      if (
-        currentPhotoIndex < productThumbnailSmallLightBox.length - 1 &&
-        button.classList.contains("light-box-next")
-      ) {
-        console.log("light-box next button"); // why isnt this working after i click on a light box thumbnail
-        console.log(currentPhotoIndex);
-        currentPhotoIndex++;
-        updatePhotoLightBox();
-      }
-    }
-  });
-  //   console.log("next button");
-  //   console.log(currentPhotoIndex);
-});
-
-// Make click function for lightbox thumbnails
-productThumbnail.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    if (button.classList.contains("photo")) {
-      console.log("main thumbnail");
-      console.log(currentPhotoIndex);
-      currentPhotoIndex = index;
-      updatePhoto();
-    } else if (button.classList.contains("photo-light-box")) {
-      console.log("lightbox thumbnail");
-      console.log(currentPhotoIndex);
-      currentPhotoIndex = index;
-      updatePhotoLightBox();
-    }
-  });
-});
-
-productThumbnailSmall.forEach((thumbnail) => {
-  thumbnail.addEventListener("click", handleProductThumbnailSmall);
-});
-
-productThumbnailSmallLightBox.forEach((thumbnail) => {
-  thumbnail.addEventListener("click", handleProductThumbnailSmallLightBox);
-});
 
 function handleShoppingCartButton() {
   let openCart = document.querySelector(".shopping-cart-open");
@@ -157,75 +125,38 @@ function handleProductThumbnailSmallLightBox(event) {
   }
 }
 
-function updatePhotoLightBox() {
+// Function to update the main photo
+function updateMainPhoto() {
+  let newPhotoSrc =
+    productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
+  productThumbnailMain.src = newPhotoSrc;
+  updateButtonStates(
+    previousButtonMain,
+    nextButtonMain,
+    productThumbnailSmall.length
+  );
+}
+
+// Function to update the lightbox photo
+function updateLightboxPhoto() {
   let newPhotoSrcLightBox =
     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
       "data-large-src"
     );
-  //   console.log(newPhotoSrcLightBox);
-
-  let photosLightBox = document.querySelectorAll(".photo-light-box");
-
-  //   console.log(photosLightBox);
-
-  // fix here
-
-  //   IS THIS GRABBING DATA LARGE SRC CORRECTLY?
-  let newMainPhotoLightBox = Array.from(photosLightBox).find(
-    (photo) => photo.getAttribute("data-large-src") === newPhotoSrcLightBox
+  productThumbnailMainLightbox.src = newPhotoSrcLightBox;
+  updateButtonStates(
+    previousButtonLightBox,
+    nextButtonLightBox,
+    productThumbnailSmallLightBox.length
   );
-
-  console.log(newMainPhotoLightBox);
-
-  if (newMainPhotoLightBox) {
-    productThumbnailMainLightbox.src = newPhotoSrcLightBox;
-    // console.log(newMainPhotoLightBox);
-    // productThumbnailMainLightbox.src = newMainPhotoLightBox;
-  } else {
-    console.log("Not working");
-    // return newPhotoSrcLightBox;
-  }
-
-  if (currentPhotoIndex === 0) {
-    previousButton.disabled = true;
-  } else {
-    previousButton.disabled = false;
-  }
-
-  if (currentPhotoIndex === photosLightBox.length - 1) {
-    nextButton.disabled = true;
-  } else {
-    nextButton.disabled = false;
-  }
 }
-updatePhotoLightBox();
 
-function updatePhoto() {
-  let newPhotoSrc =
-    productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
-
-  let photos = document.querySelectorAll(".photo");
-
-  let newMainPhoto = Array.from(photos).find(
-    (photo) => photo.getAttribute("data-large-src") === newPhotoSrc
-  );
-
-  if (newMainPhoto) {
-    productThumbnailMain.src = newPhotoSrc;
-  } else {
-    return newPhotoSrc;
-  }
-
-  if (currentPhotoIndex === 0) {
-    previousButton.disabled = true;
-  } else {
-    previousButton.disabled = false;
-  }
-
-  if (currentPhotoIndex === photos.length - 1) {
-    nextButton.disabled = true;
-  } else {
-    nextButton.disabled = false;
-  }
+// Function to update button states (disable when at the start or end)
+function updateButtonStates(previousButton, nextButton, length) {
+  previousButton.disabled = currentPhotoIndex === 0;
+  nextButton.disabled = currentPhotoIndex === length - 1;
 }
-updatePhoto();
+
+function handleThumbnailClick() {
+  displayLightBox.classList.remove("hidden");
+}
