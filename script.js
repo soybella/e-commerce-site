@@ -1,4 +1,5 @@
 let currentPhotoIndex = 0;
+let currentProductQuantity = 0;
 let closeNavBar = document.querySelector("#navbar-close-button");
 let shoppingCartButton = document.querySelector(".nav-cart");
 let navBarIcon = document.querySelector(".nav-menu-icon");
@@ -15,8 +16,13 @@ let previousButtonLightBox = document.querySelector(".light-box-previous");
 let nextButtonLightBox = document.querySelector(".light-box-next");
 let displayLightBox = document.querySelector(".light-box");
 let closeLightBox = document.querySelector("#light-box-close-button");
+let minusQuantityButton = document.querySelector(".minus-product-button");
+let addQuantityButton = document.querySelector(".add-product-button");
+let quantityNumber = document.querySelector(".quantity-number");
 
+// NEXT UPDATE THE QUANTITY AND ADD TO CART
 // Event listener for main thumbnail
+
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
     currentPhotoIndex = index;
@@ -77,6 +83,8 @@ productThumbnailSmallLightBox.forEach((thumbnail) => {
 closeNavBar.addEventListener("click", handleCloseNavBar);
 navBarIcon.addEventListener("click", handleNavBarIcon);
 shoppingCartButton.addEventListener("click", handleShoppingCartButton);
+minusQuantityButton.addEventListener("click", handleMinusQuantityButton);
+addQuantityButton.addEventListener("click", handleAddQuantityButton);
 
 function checkScreenWidth() {
   if (window.innerWidth >= 768) {
@@ -87,6 +95,20 @@ function checkScreenWidth() {
 }
 checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
+
+function handleMinusQuantityButton() {
+  if (currentProductQuantity > 0) {
+    currentProductQuantity--;
+    console.log(currentProductQuantity);
+    quantityNumber.innerHTML = currentProductQuantity;
+  }
+}
+
+function handleAddQuantityButton() {
+  currentProductQuantity++;
+  console.log(currentProductQuantity);
+  quantityNumber.innerHTML = currentProductQuantity;
+}
 
 function handleShoppingCartButton() {
   let openCart = document.querySelector(".shopping-cart-open");
