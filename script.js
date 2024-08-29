@@ -19,6 +19,14 @@ let closeLightBox = document.querySelector("#light-box-close-button");
 let minusQuantityButton = document.querySelector(".minus-product-button");
 let addQuantityButton = document.querySelector(".add-product-button");
 let quantityNumber = document.querySelector(".quantity-number");
+let addToCartButton = document.querySelector(".button-add-to-cart");
+let shoppingCartBasket = document.querySelector(".shopping-cart-basket-filled");
+let shoppingCartEmptyBasket = document.querySelector(
+  ".shopping-cart-empty-message"
+);
+let shoppingCartCheckoutButton = document.querySelector(
+  ".shopping-cart-checkout-button "
+);
 
 // NEXT UPDATE THE QUANTITY AND ADD TO CART
 // Event listener for main thumbnail
@@ -85,6 +93,7 @@ navBarIcon.addEventListener("click", handleNavBarIcon);
 shoppingCartButton.addEventListener("click", handleShoppingCartButton);
 minusQuantityButton.addEventListener("click", handleMinusQuantityButton);
 addQuantityButton.addEventListener("click", handleAddQuantityButton);
+addToCartButton.addEventListener("click", handleAddToCart);
 
 function checkScreenWidth() {
   if (window.innerWidth >= 768) {
@@ -95,6 +104,15 @@ function checkScreenWidth() {
 }
 checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
+
+function handleAddToCart() {
+  //   console.log("test");
+  shoppingCartBasket.classList.remove("hidden");
+  shoppingCartEmptyBasket.classList.add("hidden");
+  shoppingCartCheckoutButton.classList.remove("hidden");
+  let quantityPriceTotal = currentProductQuantity * 125;
+  console.log(quantityPriceTotal);
+}
 
 function handleMinusQuantityButton() {
   if (currentProductQuantity > 0) {
