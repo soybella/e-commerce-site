@@ -20,6 +20,7 @@ let minusQuantityButton = document.querySelector(".minus-product-button");
 let addQuantityButton = document.querySelector(".add-product-button");
 let quantityNumber = document.querySelector(".quantity-number");
 let quantityNumberTotal = document.querySelector(".product-quantity-total");
+let productName = document.querySelector(".product-name");
 let addToCartButton = document.querySelector(".button-add-to-cart");
 let shoppingCartBasket = document.querySelector(".shopping-cart-basket-filled");
 let shoppingCartEmptyBasket = document.querySelector(
@@ -124,7 +125,11 @@ function handleAddToCart() {
     ".product-total-price"
   ).innerHTML = `$${quantityPriceTotal}.00`;
 
-  //Next, figure out how to grab all information correctly and display the right quantities in the shopping cart
+  productName.innerHTML = document
+    .querySelector(".product-name")
+    .getAttribute("data-product-name");
+
+  //Next, figure out how to display correct product image
 }
 
 function handleMinusQuantityButton() {
