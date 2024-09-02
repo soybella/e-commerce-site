@@ -19,6 +19,7 @@ let closeLightBox = document.querySelector("#light-box-close-button");
 let minusQuantityButton = document.querySelector(".minus-product-button");
 let addQuantityButton = document.querySelector(".add-product-button");
 let quantityNumber = document.querySelector(".quantity-number");
+let quantityNumberTotal = document.querySelector(".product-quantity-total");
 let addToCartButton = document.querySelector(".button-add-to-cart");
 let shoppingCartBasket = document.querySelector(".shopping-cart-basket-filled");
 let shoppingCartEmptyBasket = document.querySelector(
@@ -110,8 +111,20 @@ function handleAddToCart() {
   shoppingCartBasket.classList.remove("hidden");
   shoppingCartEmptyBasket.classList.add("hidden");
   shoppingCartCheckoutButton.classList.remove("hidden");
-  let quantityPriceTotal = currentProductQuantity * 125;
+  let discountPrice = document
+    .querySelector(".discount-price")
+    .getAttribute("data-product-price");
+
+  //   console.log(discountPrice);
+
+  let quantityPriceTotal = currentProductQuantity * discountPrice;
   console.log(quantityPriceTotal);
+
+  document.querySelector(
+    ".product-total-price"
+  ).innerHTML = `$${quantityPriceTotal}.00`;
+
+  //Next, figure out how to grab all information correctly and display the right quantities in the shopping cart
 }
 
 function handleMinusQuantityButton() {
@@ -119,6 +132,7 @@ function handleMinusQuantityButton() {
     currentProductQuantity--;
     console.log(currentProductQuantity);
     quantityNumber.innerHTML = currentProductQuantity;
+    quantityNumberTotal.innerHTML = `x ${currentProductQuantity}`;
   }
 }
 
@@ -126,6 +140,7 @@ function handleAddQuantityButton() {
   currentProductQuantity++;
   console.log(currentProductQuantity);
   quantityNumber.innerHTML = currentProductQuantity;
+  quantityNumberTotal.innerHTML = `x ${currentProductQuantity}`;
 }
 
 function handleShoppingCartButton() {
