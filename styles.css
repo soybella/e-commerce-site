@@ -159,6 +159,7 @@ footer {
   min-height: 3.25rem;
   background-color: var(--orange-accent-color);
   font-weight: bold;
+  color: var(--black-accent-color);
 }
 
 .shopping-cart-checkout-button:hover {
@@ -169,7 +170,9 @@ footer {
   min-width: 0.9rem;
   min-height: 1rem;
   background-image: url("./images/icon-delete.svg");
+  background-repeat: no-repeat;
   background-color: transparent;
+  background-position: center;
   border-radius: 0;
 }
 

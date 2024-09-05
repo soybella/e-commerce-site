@@ -20,6 +20,7 @@ let minusQuantityButton = document.querySelector(".minus-product-button");
 let addQuantityButton = document.querySelector(".add-product-button");
 let quantityNumber = document.querySelector(".quantity-number");
 let quantityNumberTotal = document.querySelector(".product-quantity-total");
+let productDiscountPrice = document.querySelector(".discount-price-cart");
 let productName = document.querySelector(".product-name");
 let addToCartButton = document.querySelector(".button-add-to-cart");
 let shoppingCartBasket = document.querySelector(".shopping-cart-basket-filled");
@@ -29,9 +30,6 @@ let shoppingCartEmptyBasket = document.querySelector(
 let shoppingCartCheckoutButton = document.querySelector(
   ".shopping-cart-checkout-button "
 );
-
-// NEXT UPDATE THE QUANTITY AND ADD TO CART
-// Event listener for main thumbnail
 
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
@@ -108,28 +106,38 @@ checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
 
 function handleAddToCart() {
-  //   console.log("test");
   shoppingCartBasket.classList.remove("hidden");
   shoppingCartEmptyBasket.classList.add("hidden");
   shoppingCartCheckoutButton.classList.remove("hidden");
-  let discountPrice = document
-    .querySelector(".discount-price")
-    .getAttribute("data-product-price");
 
-  //   console.log(discountPrice);
+  productDiscountPrice.innerHTML = `$${productDiscountPrice.getAttribute(
+    "data-product-price"
+  )}`;
 
-  let quantityPriceTotal = currentProductQuantity * discountPrice;
+  let discountPrice = productDiscountPrice.getAttribute("data-product-price");
+
+  let productDiscountPriceNumber = parseFloat(discountPrice);
+
+  console.log(productDiscountPriceNumber);
+
+  let quantityPriceTotal = currentProductQuantity * productDiscountPriceNumber;
   console.log(quantityPriceTotal);
 
-  document.querySelector(
-    ".product-total-price"
-  ).innerHTML = `$${quantityPriceTotal}.00`;
+  if (Number.isInteger(quantityPriceTotal)) {
+    document.querySelector(
+      ".product-total-price"
+    ).innerHTML = `$${quantityPriceTotal}.00`;
+  } else {
+    document.querySelector(
+      ".product-total-price"
+    ).innerHTML = `$${quantityPriceTotal.toFixed(2)}`;
+  }
 
   productName.innerHTML = document
     .querySelector(".product-name")
     .getAttribute("data-product-name");
 
-  //Next, figure out how to display correct product image
+  //Next figure out how to display correct product image
 }
 
 function handleMinusQuantityButton() {
