@@ -27,6 +27,10 @@ let shoppingCartBasket = document.querySelector(".shopping-cart-basket-filled");
 let shoppingCartEmptyBasket = document.querySelector(
   ".shopping-cart-empty-message"
 );
+//  CHANGE THIS TO BE A REGULAR ELEMENT NOT A PSUEDO ELEMENT SO I CAN ACCESS IT
+let shoppingCartFilledBasket = document.querySelector(
+  ".shopping-cart-basket-quantity"
+);
 let shoppingCartCheckoutButton = document.querySelector(
   ".shopping-cart-checkout-button "
 );
@@ -108,6 +112,8 @@ window.addEventListener("resize", checkScreenWidth);
 function handleAddToCart() {
   shoppingCartBasket.classList.remove("hidden");
   shoppingCartEmptyBasket.classList.add("hidden");
+  shoppingCartFilledBasket.classList.remove("hidden");
+  shoppingCartFilledBasket.innerHTML = currentProductQuantity;
   shoppingCartCheckoutButton.classList.remove("hidden");
 
   productDiscountPrice.innerHTML = `$${productDiscountPrice.getAttribute(

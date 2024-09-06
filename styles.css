@@ -120,6 +120,22 @@ footer {
   background-color: transparent;
 }
 
+.shopping-cart-container {
+  position: relative;
+}
+
+.shopping-cart-basket-quantity {
+  position: absolute;
+  text-align: center;
+  left: 2rem;
+  width: 0.9rem;
+  height: 0.7rem;
+  background-color: var(--orange-accent-color);
+  font-size: 0.6rem;
+  color: white;
+  border-radius: 50%;
+}
+
 .navbar-responsive {
   display: none;
 }
