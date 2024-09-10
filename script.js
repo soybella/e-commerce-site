@@ -27,7 +27,8 @@ let shoppingCartBasket = document.querySelector(".shopping-cart-basket-filled");
 let shoppingCartEmptyBasket = document.querySelector(
   ".shopping-cart-empty-message"
 );
-//  CHANGE THIS TO BE A REGULAR ELEMENT NOT A PSUEDO ELEMENT SO I CAN ACCESS IT
+let deleteProductButton = document.querySelector(".delete-product");
+deleteProductButton.addEventListener("click", handleDeleteProductButton);
 let shoppingCartFilledBasket = document.querySelector(
   ".shopping-cart-basket-quantity"
 );
@@ -142,8 +143,15 @@ function handleAddToCart() {
   productName.innerHTML = document
     .querySelector(".product-name")
     .getAttribute("data-product-name");
+}
 
-  //Next figure out how to display correct product image
+function handleDeleteProductButton() {
+  shoppingCartBasket.classList.add("hidden");
+  shoppingCartEmptyBasket.classList.remove("hidden");
+  shoppingCartCheckoutButton.classList.add("hidden");
+  shoppingCartFilledBasket.classList.add("hidden");
+  //   how to reset the quanitity number
+  quantityNumber.innerHTML = currentProductQuantity;
 }
 
 function handleMinusQuantityButton() {
