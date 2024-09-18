@@ -150,11 +150,12 @@ function handleDeleteProductButton() {
   shoppingCartEmptyBasket.classList.remove("hidden");
   shoppingCartCheckoutButton.classList.add("hidden");
   shoppingCartFilledBasket.classList.add("hidden");
-  //   how to reset the quanitity number
+  //   how to reset the quantity number
   quantityNumber.innerHTML = currentProductQuantity;
 }
 
 function handleMinusQuantityButton() {
+  handleDeleteProductButton();
   if (currentProductQuantity > 0) {
     currentProductQuantity--;
     console.log(currentProductQuantity);
@@ -164,6 +165,7 @@ function handleMinusQuantityButton() {
 }
 
 function handleAddQuantityButton() {
+  handleDeleteProductButton();
   currentProductQuantity++;
   console.log(currentProductQuantity);
   quantityNumber.innerHTML = currentProductQuantity;
