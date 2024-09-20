@@ -36,6 +36,14 @@ let shoppingCartCheckoutButton = document.querySelector(
   ".shopping-cart-checkout-button "
 );
 
+let activeThumbnail = document.querySelector(".active");
+activeThumbnail.disabled = true;
+activeThumbnail.classList.add("no-hover");
+// activeThumbnail.classList.add("active")
+// activeThumbnail.style.boxShadow = "0 0 0 0.1rem hsl(26, 100%, 55%)";
+// activeThumbnail.style.borderRadius = "0.5rem";
+// activeThumbnail.style.opacity = "0.5";
+
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
     currentPhotoIndex = index;
@@ -43,7 +51,6 @@ productThumbnailSmall.forEach((thumbnail, index) => {
   });
 });
 
-// Event listener for lightbox thumbnails
 productThumbnailSmallLightBox.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
     currentPhotoIndex = index;
@@ -51,7 +58,6 @@ productThumbnailSmallLightBox.forEach((thumbnail, index) => {
   });
 });
 
-// Update main photo when navigating
 previousButtonMain.addEventListener("click", () => {
   if (currentPhotoIndex > 0) {
     currentPhotoIndex--;
@@ -66,7 +72,6 @@ nextButtonMain.addEventListener("click", () => {
   }
 });
 
-// Update lightbox photo when navigating
 previousButtonLightBox.addEventListener("click", () => {
   if (currentPhotoIndex > 0) {
     currentPhotoIndex--;
@@ -146,16 +151,16 @@ function handleAddToCart() {
 }
 
 function handleDeleteProductButton() {
+  currentProductQuantity = 0;
+  quantityNumber.innerHTML = currentProductQuantity;
+
   shoppingCartBasket.classList.add("hidden");
   shoppingCartEmptyBasket.classList.remove("hidden");
   shoppingCartCheckoutButton.classList.add("hidden");
   shoppingCartFilledBasket.classList.add("hidden");
-  //   how to reset the quantity number
-  quantityNumber.innerHTML = currentProductQuantity;
 }
 
 function handleMinusQuantityButton() {
-  handleDeleteProductButton();
   if (currentProductQuantity > 0) {
     currentProductQuantity--;
     console.log(currentProductQuantity);
@@ -165,7 +170,6 @@ function handleMinusQuantityButton() {
 }
 
 function handleAddQuantityButton() {
-  handleDeleteProductButton();
   currentProductQuantity++;
   console.log(currentProductQuantity);
   quantityNumber.innerHTML = currentProductQuantity;
@@ -193,7 +197,14 @@ function handleProductThumbnailSmall(event) {
   let newMainThumbnailLightBox =
     clickedThumbnail.getAttribute("data-large-src");
 
+  // put this style on light box thumbnails and fix it to take event listener off when another thumbmnail is clicked
+  // if (clickedThumbnail.classList.contains("active")) {
+  //   clickedThumbnail.disabled = true;
+  //   clickedThumbnail.classList.add("no-hover");
+  // }
+
   if (productThumbnailMain && newMainThumbnail) {
+    clickedThumbnail.classList.add("active");
     productThumbnailMain.src = newMainThumbnail;
     productThumbnailMainLightbox.src = newMainThumbnailLightBox;
   }
@@ -209,7 +220,6 @@ function handleProductThumbnailSmallLightBox(event) {
   }
 }
 
-// Function to update the main photo
 function updateMainPhoto() {
   let newPhotoSrc =
     productThumbnailSmall[currentPhotoIndex].getAttribute("data-large-src");
@@ -221,7 +231,6 @@ function updateMainPhoto() {
   );
 }
 
-// Function to update the lightbox photo
 function updateLightboxPhoto() {
   let newPhotoSrcLightBox =
     productThumbnailSmallLightBox[currentPhotoIndex].getAttribute(
@@ -235,7 +244,6 @@ function updateLightboxPhoto() {
   );
 }
 
-// Function to update button states (disable when at the start or end)
 function updateButtonStates(previousButton, nextButton, length) {
   previousButton.disabled = currentPhotoIndex === 0;
   nextButton.disabled = currentPhotoIndex === length - 1;

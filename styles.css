@@ -411,6 +411,17 @@ footer {
   border: none;
 }
 
+.active {
+  box-shadow: 0 0 0 0.1rem var(--orange-accent-color);
+  border-radius: 0.5rem;
+  opacity: 0.5;
+}
+
+.no-hover {
+  pointer-events: none;
+  cursor: default;
+}
+
 /*  THIS WILL BE THE EFFECT ON CLICK USING JAVASCRIPT */
 /* .light-box .product-small-wrapper::before {
   position: absolute;
@@ -423,10 +434,14 @@ footer {
   opacity: 0;
   border-radius: var(--border-radius-small);
   box-shadow: 0 0 0 0.1rem var(--orange-accent);
-}
+} */
 
-.light-box .product-small-wrapper:hover::before {
-  opacity: 1;
+/* .product-small-wrapper:hover::before {
+  box-shadow: 0 0 0 0.1rem var(--orange-accent-color);
+} */
+
+/* .thumbnail-border-style {
+  box-shadow: 0 0 0 0.1rem var(--orange-accent-color);
 } */
 
 .product-small-wrapper::before {
