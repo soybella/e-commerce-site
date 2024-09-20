@@ -36,13 +36,9 @@ let shoppingCartCheckoutButton = document.querySelector(
   ".shopping-cart-checkout-button "
 );
 
-let activeThumbnail = document.querySelector(".active");
-activeThumbnail.disabled = true;
-activeThumbnail.classList.add("no-hover");
-// activeThumbnail.classList.add("active")
-// activeThumbnail.style.boxShadow = "0 0 0 0.1rem hsl(26, 100%, 55%)";
-// activeThumbnail.style.borderRadius = "0.5rem";
-// activeThumbnail.style.opacity = "0.5";
+// let activeThumbnail = document.querySelector(".active");
+// activeThumbnail.disabled = true;
+// activeThumbnail.classList.add("no-hover");
 
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
@@ -204,7 +200,11 @@ function handleProductThumbnailSmall(event) {
   // }
 
   if (productThumbnailMain && newMainThumbnail) {
-    clickedThumbnail.classList.add("active");
+    productThumbnailSmall.forEach((thumbnail) => {
+      thumbnail.classList.remove("active");
+      clickedThumbnail.classList.add("active");
+      clickedThumbnail.classList.add("no-hover");
+    });
     productThumbnailMain.src = newMainThumbnail;
     productThumbnailMainLightbox.src = newMainThumbnailLightBox;
   }
