@@ -272,6 +272,7 @@ footer {
   max-inline-size: 100%;
   box-shadow: var(--box-shadow-small);
   border-radius: var(--border-radius-small);
+  /* border: 1px solid white; */
 }
 
 .company-name {
@@ -414,8 +415,17 @@ footer {
 .active {
   box-shadow: 0 0 0 0.1rem var(--orange-accent-color);
   border-radius: 0.5rem;
-  opacity: 0.5;
+  background-color: white;
+  /* opacity: 0.5; */
 }
+
+.active .product-thumbnail-small {
+  opacity: 0.3;
+}
+
+/* .active-opacity {
+  opacity: 0.5;
+} */
 
 .no-hover {
   pointer-events: none;
@@ -457,8 +467,12 @@ footer {
 }
 
 .product-small-wrapper:hover::before {
-  opacity: 1;
+  opacity: 0.7;
 }
+
+/* .product-thumbnail-small:hover::before {
+  opacity: 1;
+} */
 
 .light-box .close-button {
   display: flex;

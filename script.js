@@ -202,6 +202,7 @@ function handleProductThumbnailSmall(event) {
   if (productThumbnailMain && newMainThumbnail) {
     productThumbnailSmall.forEach((thumbnail) => {
       thumbnail.classList.remove("active");
+      thumbnail.classList.remove("no-hover");
       clickedThumbnail.classList.add("active");
       clickedThumbnail.classList.add("no-hover");
     });
