@@ -200,11 +200,23 @@ function handleProductThumbnailSmall(event) {
   // }
 
   if (productThumbnailMain && newMainThumbnail) {
-    productThumbnailSmall.forEach((thumbnail) => {
-      thumbnail.classList.remove("active");
-      thumbnail.classList.remove("no-hover");
+    productThumbnailSmall.forEach((mainThumbnail) => {
+      mainThumbnail.classList.remove("active");
+      // thumbnail.classList.remove("no-hover");
+      // how to add active class to the same thumbnail but for the lightbox images
       clickedThumbnail.classList.add("active");
       clickedThumbnail.classList.add("no-hover");
+      // newMainThumbnailLightBox.classList.add("active");
+      productThumbnailSmallLightBox.forEach((lightboxThumbnail) => {
+        lightboxThumbnail.classList.add("active");
+        if (
+          !mainThumbnail.classList.contains("active") &&
+          !lightboxThumbnail.contains("active")
+        ) {
+          lightboxThumbnail.classList.remove("active");
+          // console.log(newMainThumbnailLightBox);
+        }
+      });
     });
     productThumbnailMain.src = newMainThumbnail;
     productThumbnailMainLightbox.src = newMainThumbnailLightBox;
@@ -217,6 +229,12 @@ function handleProductThumbnailSmallLightBox(event) {
     clickedThumbnail.getAttribute("data-large-src");
 
   if (productThumbnailMainLightbox && newMainThumbnailLightBox) {
+    productThumbnailSmallLightBox.forEach((thumbnail) => {
+      thumbnail.classList.remove("active");
+      thumbnail.classList.remove("no-hover");
+      clickedThumbnail.classList.add("active");
+      clickedThumbnail.classList.add("no-hover");
+    });
     productThumbnailMainLightbox.src = newMainThumbnailLightBox;
   }
 }

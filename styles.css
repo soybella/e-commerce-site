@@ -272,7 +272,6 @@ footer {
   max-inline-size: 100%;
   box-shadow: var(--box-shadow-small);
   border-radius: var(--border-radius-small);
-  /* border: 1px solid white; */
 }
 
 .company-name {
@@ -416,43 +415,16 @@ footer {
   box-shadow: 0 0 0 0.1rem var(--orange-accent-color);
   border-radius: 0.5rem;
   background-color: white;
-  /* opacity: 0.5; */
 }
 
 .active .product-thumbnail-small {
   opacity: 0.3;
 }
 
-/* .active-opacity {
-  opacity: 0.5;
-} */
-
 .no-hover {
   pointer-events: none;
   cursor: default;
 }
-
-/*  THIS WILL BE THE EFFECT ON CLICK USING JAVASCRIPT */
-/* .light-box .product-small-wrapper::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  opacity: 0;
-  border-radius: var(--border-radius-small);
-  box-shadow: 0 0 0 0.1rem var(--orange-accent);
-} */
-
-/* .product-small-wrapper:hover::before {
-  box-shadow: 0 0 0 0.1rem var(--orange-accent-color);
-} */
-
-/* .thumbnail-border-style {
-  box-shadow: 0 0 0 0.1rem var(--orange-accent-color);
-} */
 
 .product-small-wrapper::before {
   position: absolute;
@@ -469,10 +441,6 @@ footer {
 .product-small-wrapper:hover::before {
   opacity: 0.7;
 }
-
-/* .product-thumbnail-small:hover::before {
-  opacity: 1;
-} */
 
 .light-box .close-button {
   display: flex;
@@ -760,5 +728,10 @@ footer {
     min-width: 3.5rem;
     min-height: 3.5rem;
     left: 95%;
+  }
+}
+@media (width < 28rem) {
+  .product-thumbnail-main {
+    border-radius: 0;
   }
 }
