@@ -193,50 +193,57 @@ function handleProductThumbnailSmall(event) {
   let newMainThumbnailLightBox =
     clickedThumbnail.getAttribute("data-large-src");
 
-  // put this style on light box thumbnails and fix it to take event listener off when another thumbmnail is clicked
-  // if (clickedThumbnail.classList.contains("active")) {
-  //   clickedThumbnail.disabled = true;
-  //   clickedThumbnail.classList.add("no-hover");
-  // }
-
   if (productThumbnailMain && newMainThumbnail) {
-    productThumbnailSmall.forEach((mainThumbnail) => {
-      mainThumbnail.classList.remove("active");
-      // thumbnail.classList.remove("no-hover");
-      // how to add active class to the same thumbnail but for the lightbox images
-      clickedThumbnail.classList.add("active");
-      clickedThumbnail.classList.add("no-hover");
-      // newMainThumbnailLightBox.classList.add("active");
-      productThumbnailSmallLightBox.forEach((lightboxThumbnail) => {
-        lightboxThumbnail.classList.add("active");
-        if (
-          !mainThumbnail.classList.contains("active") &&
-          !lightboxThumbnail.contains("active")
-        ) {
-          lightboxThumbnail.classList.remove("active");
-          // console.log(newMainThumbnailLightBox);
-        }
-      });
+    productThumbnailSmall.forEach((thumbnail) => {
+      thumbnail.classList.remove("active", "no-hover");
     });
+    clickedThumbnail.classList.add("active", "no-hover");
+
     productThumbnailMain.src = newMainThumbnail;
     productThumbnailMainLightbox.src = newMainThumbnailLightBox;
+
+    handleProductThumbnailSmallLightBox(clickedThumbnail, newMainThumbnail);
   }
 }
 
-function handleProductThumbnailSmallLightBox(event) {
-  let clickedThumbnail = event.target;
-  let newMainThumbnailLightBox =
-    clickedThumbnail.getAttribute("data-large-src");
+function handleProductThumbnailSmallLightBox(
+  event,
+  clickedThumbnail,
+  newMainThumbnail
+) {
+  let clickedLightBoxThumbnail = event.target;
+  // let newMainThumbnailLightBox = newMainThumbnail;
+  //
+  // console.log(newMainThumbnailLightBox);
+  console.log(clickedThumbnail);
+  console.log(clickedLightBoxThumbnail);
+  console.log(newMainThumbnail);
 
-  if (productThumbnailMainLightbox && newMainThumbnailLightBox) {
-    productThumbnailSmallLightBox.forEach((thumbnail) => {
-      thumbnail.classList.remove("active");
-      thumbnail.classList.remove("no-hover");
-      clickedThumbnail.classList.add("active");
-      clickedThumbnail.classList.add("no-hover");
-    });
-    productThumbnailMainLightbox.src = newMainThumbnailLightBox;
-  }
+  productThumbnailSmallLightBox.forEach((thumbnail) => {
+    // maybe at an event.target here on thumbnail?
+    thumbnail.classList.remove("active");
+    // console.log(thumbnail);
+    // thumbnail.classList.add("active");
+
+    // try fixing here to get the active class to work after the first thumbnail is clicked
+    //   if (thumbnail.getAttribute("data-large-src") === newMainThumbnail) {
+    //     thumbnail.classList.add("active");
+    //   }
+    // });
+
+    // let clickedThumbnailLightBox = event.target;
+    // let newMainThumbnail = clickedThumbnail.getAttribute("data-large-src");
+    // let newMainThumbnailLightBox =
+    // clickedThumbnail.getAttribute("data-large-src");
+    // console.log(clickedThumbnail);
+
+    if (
+      productThumbnailMainLightbox.getAttribute("data-large-src") ===
+      newMainThumbnail
+    ) {
+      thumbnail.classList.add("active");
+    }
+  });
 }
 
 function updateMainPhoto() {
