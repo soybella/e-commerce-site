@@ -36,10 +36,6 @@ let shoppingCartCheckoutButton = document.querySelector(
   ".shopping-cart-checkout-button "
 );
 
-// let activeThumbnail = document.querySelector(".active");
-// activeThumbnail.disabled = true;
-// activeThumbnail.classList.add("no-hover");
-
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
     currentPhotoIndex = index;
@@ -190,8 +186,6 @@ function handleCloseNavBar() {
 function handleProductThumbnailSmall(event) {
   let clickedThumbnail = event.target;
   let newMainThumbnail = clickedThumbnail.getAttribute("data-large-src");
-  let newMainThumbnailLightBox =
-    clickedThumbnail.getAttribute("data-large-src");
 
   if (productThumbnailMain && newMainThumbnail) {
     productThumbnailSmall.forEach((thumbnail) => {
@@ -200,47 +194,20 @@ function handleProductThumbnailSmall(event) {
     clickedThumbnail.classList.add("active", "no-hover");
 
     productThumbnailMain.src = newMainThumbnail;
-    productThumbnailMainLightbox.src = newMainThumbnailLightBox;
+    productThumbnailMainLightbox.src = newMainThumbnail;
 
     handleProductThumbnailSmallLightBox(clickedThumbnail, newMainThumbnail);
   }
 }
 
 function handleProductThumbnailSmallLightBox(
-  event,
   clickedThumbnail,
   newMainThumbnail
 ) {
-  let clickedLightBoxThumbnail = event.target;
-  // let newMainThumbnailLightBox = newMainThumbnail;
-  //
-  // console.log(newMainThumbnailLightBox);
-  console.log(clickedThumbnail);
-  console.log(clickedLightBoxThumbnail);
-  console.log(newMainThumbnail);
-
   productThumbnailSmallLightBox.forEach((thumbnail) => {
-    // maybe at an event.target here on thumbnail?
     thumbnail.classList.remove("active");
-    // console.log(thumbnail);
-    // thumbnail.classList.add("active");
 
-    // try fixing here to get the active class to work after the first thumbnail is clicked
-    //   if (thumbnail.getAttribute("data-large-src") === newMainThumbnail) {
-    //     thumbnail.classList.add("active");
-    //   }
-    // });
-
-    // let clickedThumbnailLightBox = event.target;
-    // let newMainThumbnail = clickedThumbnail.getAttribute("data-large-src");
-    // let newMainThumbnailLightBox =
-    // clickedThumbnail.getAttribute("data-large-src");
-    // console.log(clickedThumbnail);
-
-    if (
-      productThumbnailMainLightbox.getAttribute("data-large-src") ===
-      newMainThumbnail
-    ) {
+    if (thumbnail.getAttribute("data-large-src") === newMainThumbnail) {
       thumbnail.classList.add("active");
     }
   });
