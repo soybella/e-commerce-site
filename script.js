@@ -193,22 +193,37 @@ function handleProductThumbnailSmall(event) {
     });
     clickedThumbnail.classList.add("active", "no-hover");
 
+    productThumbnailSmallLightBox.forEach((thumbnail) => {
+      thumbnail.classList.remove("active", "no-hover");
+      if (
+        clickedThumbnail.classList.contains("active") &&
+        thumbnail.getAttribute("data-large-src") === newMainThumbnail
+      ) {
+        thumbnail.classList.add("active", "no-hover");
+      }
+    });
+
     productThumbnailMain.src = newMainThumbnail;
     productThumbnailMainLightbox.src = newMainThumbnail;
 
-    handleProductThumbnailSmallLightBox(clickedThumbnail, newMainThumbnail);
+    handleProductThumbnailSmallLightBox.bind(
+      null,
+      newMainThumbnail,
+      clickedThumbnail
+    );
   }
 }
 
-function handleProductThumbnailSmallLightBox(
-  clickedThumbnail,
-  newMainThumbnail
-) {
-  productThumbnailSmallLightBox.forEach((thumbnail) => {
-    thumbnail.classList.remove("active");
+function handleProductThumbnailSmallLightBox(event) {
+  let clickedLightBoxThumbnail = event.target;
 
-    if (thumbnail.getAttribute("data-large-src") === newMainThumbnail) {
-      thumbnail.classList.add("active");
+  let newLightBoxThumbnail =
+    clickedLightBoxThumbnail.getAttribute("data-large-src");
+
+  productThumbnailSmallLightBox.forEach((thumbnail) => {
+    thumbnail.classList.remove("active", "no-hover");
+    if (thumbnail.getAttribute("data-large-src") === newLightBoxThumbnail) {
+      clickedLightBoxThumbnail.classList.add("active", "no-hover");
     }
   });
 }
