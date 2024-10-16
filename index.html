@@ -3,12 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <meta
+      name="description"
+      content="Shop Fall Limited Edition Sneakers and explore more products for men and women from Sneaker Company. Portfolio webpage coded by Isabella Lizarde. Challenge is from Frontend Mentor"
+    />
+    <meta
+      name="keywords"
+      content="sneakers, limited edition, men shoes, women shoes, fall sneakers, sneaker company, ecommerce, frontendmentor"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
-
     <link
       rel="icon"
       type="image/png"
@@ -21,20 +31,31 @@
   <body>
     <header>
       <div>
-      <button class=".navMenuIcon nav-menu-icon"></button>
-      <img src="./images/logo.svg" height="24" class=".companyLogo company-logo"/>
+        <button
+          class="nav-menu-icon"
+          aria-label="Open navigation menu"
+        ></button>
+        <img
+          src="./images/logo.svg"
+          height="24"
+          class="company-logo"
+          alt="Company logo"
+        />
       </div>
       <nav>
-          <a href="http://">Collections</a>
-          <a href="http://">Men</a>
-          <a href="http://">Women</a>
-          <a href="http://">About</a>
-          <a href="http://">Contact</a>
-        </div>
+        <a href="http://">Collections</a>
+        <a href="http://">Men</a>
+        <a href="http://">Women</a>
+        <a href="http://">About</a>
+        <a href="http://">Contact</a>
       </nav>
       <nav class="navbar-responsive">
         <div class="navbar-wrapper">
-          <button class="close-button" id="navbar-close-button"></button>
+          <button
+            class="close-button"
+            id="navbar-close-button"
+            aria-label="Close navigation menu"
+          ></button>
           <a href="http://">Collections</a>
           <a href="http://">Men</a>
           <a href="http://">Women</a>
@@ -42,79 +63,149 @@
           <a href="http://">Contact</a>
         </div>
       </nav>
-        <span class="account-details">
-          <div class="shopping-cart-container">
-          <button alt="" class=".navShoppingCart nav-cart"></button>
+      <span class="account-details">
+        <div class="shopping-cart-container">
+          <button class="nav-cart" aria-label="Open shopping cart"></button>
           <span class="shopping-cart-basket-quantity hidden"></span>
-          </div>
-          <button alt="" class="account-avatar"></button>
-        </span>
+        </div>
+        <button
+          class="account-avatar"
+          aria-label="Open account details"
+        ></button>
+      </span>
     </header>
     <main>
       <div class="shopping-cart-open hidden">
-       <p class="shopping-cart-header">Cart</p>
+        <p class="shopping-cart-header">Cart</p>
         <div class="shopping-cart-items">
           <div class="shopping-cart-basket-filled hidden">
-            <img src="./images/image-product-1-thumbnail.jpg" class=".productThumbnailCart product-thumbnail-cart"/>
+            <!-- Fix the image here with javascript -->
+            <img
+              src="./images/image-product-1-thumbnail.jpg"
+              alt="Shopping cart product thumbnail"
+              class="product-thumbnail-cart"
+            />
             <div class="shopping-cart-product-information">
-              <p class="product-name" data-product-name="Fall Limited Edition Sneakers"></p>
-                <span class=".productDiscountPrice discount-price discount-price-cart" data-product-price="125.00"></span>
-                <span class=".productQuantityTotal product-quantity-total"></span>
-                <span class=".productTotalPrice product-total-price"></span>
-              </div>
-              <button class=".deleteProduct delete-product"></button>
+              <p
+                class="product-name"
+                data-product-name="Fall Limited Edition Sneakers"
+              ></p>
+              <span
+                class="discount-price discount-price-cart"
+                data-product-price="125.00"
+              ></span>
+              <span class="product-quantity-total"></span>
+              <span class="product-total-price"></span>
+            </div>
+            <button
+              class="delete-product"
+              aria-label="Clear shopping cart"
+            ></button>
           </div>
-            <button class="shopping-cart-checkout-button hidden">Checkout</button>
-            <p class="shopping-cart-empty-message">Your cart is empty.</p>
+          <button
+            class="shopping-cart-checkout-button hidden"
+            aria-label="Proceed to checkout"
+          >
+            Checkout
+          </button>
+          <p class="shopping-cart-empty-message">Your cart is empty.</p>
         </div>
-       </div>
+      </div>
       <div class="product-images">
-        <button class="previous-button arrow-button hidden main-previous-button"></button>
-        <img src="./images/image-product-1.jpg" alt="" width="445" class=".productThumbnailMain product-thumbnail-main"/>
-        <button class="next-button arrow-button hidden main-next-button"></button>
-         <span>
-          <button class="product-small-wrapper photo active no-hover" data-large-src="./images/image-product-1.jpg">
-            <img src="./images/image-product-1-thumbnail.jpg" alt="" class=".productThumbnail1 product-thumbnail-small"/>
+        <button
+          class="previous-button arrow-button hidden main-previous-button"
+          aria-label="Previous image"
+        ></button>
+        <img
+          src="./images/image-product-1.jpg"
+          alt="Main thumbnail"
+          width="445"
+          class="product-thumbnail-main"
+        />
+        <button
+          class="next-button arrow-button hidden main-next-button"
+          aria-label="Next image"
+        ></button>
+        <span>
+          <button
+            class="product-small-wrapper photo active no-hover"
+            data-large-src="./images/image-product-1.jpg"
+            aria-label="Product thumbnail"
+          >
+            <img
+              src="./images/image-product-1-thumbnail.jpg"
+              alt="Product thumbnail image"
+              class="product-thumbnail-small"
+            />
           </button>
-          <button class="product-small-wrapper photo" data-large-src="./images/image-product-2.jpg">
-            <img src="./images/image-product-2-thumbnail.jpg" alt="" class=".productThumbnail2 product-thumbnail-small "/>
+          <button
+            class="product-small-wrapper photo"
+            data-large-src="./images/image-product-2.jpg"
+            aria-label="Product thumbnail"
+          >
+            <img
+              src="./images/image-product-2-thumbnail.jpg"
+              alt="Product thumbnail image"
+              class="product-thumbnail-small"
+            />
           </button>
-          <button class="product-small-wrapper photo" data-large-src="./images/image-product-3.jpg">
-            <img src="./images/image-product-3-thumbnail.jpg" alt="" class=".productThumbnail3 product-thumbnail-small "/>
+          <button
+            class="product-small-wrapper photo"
+            data-large-src="./images/image-product-3.jpg"
+            aria-label="Product thumbnail"
+          >
+            <img
+              src="./images/image-product-3-thumbnail.jpg"
+              alt="Product thumbnail image"
+              class="product-thumbnail-small"
+            />
           </button>
-          <button class="product-small-wrapper photo" data-large-src="./images/image-product-4.jpg">
-            <img src="./images/image-product-4-thumbnail.jpg" alt="" class=".productThumbnail4 product-thumbnail-small "/>
+          <button
+            class="product-small-wrapper photo"
+            data-large-src="./images/image-product-4.jpg"
+            aria-label="Product thumbnail"
+          >
+            <img
+              src="./images/image-product-4-thumbnail.jpg"
+              alt="Product thumbnail image"
+              class="product-thumbnail-small"
+            />
           </button>
-       </span>
+        </span>
       </div>
       <section class="product-details">
-        <h1 class="company-name">
-          Sneaker Company 
-        </h1>
-        <h2 class="product-name">
-          Fall Limited Edition Sneakers 
-        </h2>
+        <h1 class="company-name">Sneaker Company</h1>
+        <h2 class="product-name">Fall Limited Edition Sneakers</h2>
         <p class="product-description">
-          These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer
-          sole, they’ll withstand everything the weather can offer. 
-          <div class="product-prices">
-            <span class=".productDiscountPrice discount-price">$125.00</span>
-            <span class=".productDiscountPercentage discount-percentage">50%</span>
-            <div class=".productOriginalPrice original-price" style="text-decoration: line-through;">$250.00</div>
-          </div>
+          These low-profile sneakers are your perfect casual wear companion.
+          Featuring a durable rubber outer sole, they’ll withstand everything
+          the weather can offer.
         </p>
+        <div class="product-prices">
+          <span class="discount-price">$125.00</span>
+          <span class="discount-percentage">50%</span>
+          <div class="original-price" style="text-decoration: line-through">
+            $250.00
+          </div>
+        </div>
         <div class="product-add-to-cart">
           <span class="product-quantity">
-            <button class="minus-product-button quantity-button">
-              <!-- <img src="./images/icon-minus.svg" alt="" class=".minusProduct minus-product"> -->
-            </button>
+            <button
+              class="minus-product-button quantity-button"
+              aria-label="Decrease quantity"
+            ></button>
             <span class="quantity-number">0</span>
-            <button class="add-product-button quantity-button">
-              <!-- <img src="./images/icon-plus.svg" alt="" class=".addProduct add-product"> -->
-            </button>
+            <button
+              class="add-product-button quantity-button"
+              aria-label="Increase quantity"
+            ></button>
           </span>
-          <button class=".addToCart button-add-to-cart">
-            <img src="./images/icon-cart.svg" alt="" class=".addToCart add-to-cart"/>
+          <button class="button-add-to-cart" aria-label="Add to cart">
+            <img
+              src="./images/icon-cart.svg"
+              alt="Shopping cart icon"
+              class="add-to-cart"
+            />
             Add to cart
           </button>
         </div>
@@ -122,33 +213,83 @@
     </main>
     <section class="light-box hidden">
       <div class="product-images">
-        <button class="close-button" id="light-box-close-button"></button>
+        <button
+          class="close-button"
+          id="light-box-close-button"
+          aria-label="Close light box display"
+        ></button>
         <div class="product-main-wrapper">
-          <button class="previous-button arrow-button light-box-previous"></button>
-          <img src="./images/image-product-1.jpg" alt="" width="445" class=".productThumbnailMain product-thumbnail-main"/>
-          <button class="next-button arrow-button light-box-next"></button>
+          <button
+            class="previous-button arrow-button light-box-previous"
+            aria-label="Previous light box image"
+          ></button>
+          <img
+            src="./images/image-product-1.jpg"
+            alt="Product image"
+            width="445"
+            class="product-thumbnail-main"
+          />
+          <button
+            class="next-button arrow-button light-box-next"
+            aria-label="Next light box image"
+          ></button>
         </div>
         <span>
-          <button class="product-small-wrapper photo-light-box active no-hover" data-large-src="./images/image-product-1.jpg">
-            <img src="./images/image-product-1-thumbnail.jpg" alt="" class=".productThumbnail1 product-thumbnail-small" />
+          <button
+            class="product-small-wrapper photo-light-box active no-hover"
+            data-large-src="./images/image-product-1.jpg"
+            aria-label="Light box product thumbnail"
+          >
+            <img
+              src="./images/image-product-1-thumbnail.jpg"
+              alt="Light box product thumbnail"
+              class="product-thumbnail-small"
+            />
           </button>
-          <button class="product-small-wrapper photo-light-box" data-large-src="./images/image-product-2.jpg">
-            <img src="./images/image-product-2-thumbnail.jpg" alt="" class=".productThumbnail2 product-thumbnail-small"/>
+          <button
+            class="product-small-wrapper photo-light-box"
+            data-large-src="./images/image-product-2.jpg"
+            aria-label="Light box product thumbnail"
+          >
+            <img
+              src="./images/image-product-2-thumbnail.jpg"
+              alt="Light box product thumbnail"
+              class="product-thumbnail-small"
+            />
           </button>
-          <button class="product-small-wrapper photo-light-box" data-large-src="./images/image-product-3.jpg">
-            <img src="./images/image-product-3-thumbnail.jpg" alt="" class=".productThumbnail3 product-thumbnail-small"/>
+          <button
+            class="product-small-wrapper photo-light-box"
+            data-large-src="./images/image-product-3.jpg"
+            aria-label="Light box product thumbnail"
+          >
+            <img
+              src="./images/image-product-3-thumbnail.jpg"
+              alt="Light box product thumbnail"
+              class="product-thumbnail-small"
+            />
           </button>
-          <button class="product-small-wrapper photo-light-box" data-large-src="./images/image-product-4.jpg">
-            <img src="./images/image-product-4-thumbnail.jpg" alt="" class=".productThumbnail4 product-thumbnail-small"/>
+          <button
+            class="product-small-wrapper photo-light-box"
+            data-large-src="./images/image-product-4.jpg"
+            aria-label="Light box product thumbnail"
+          >
+            <img
+              src="./images/image-product-4-thumbnail.jpg"
+              alt="Light box product thumbnail"
+              class="product-thumbnail-small"
+            />
           </button>
-       </span>
+        </span>
       </div>
     </section>
     <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
-      >. Coded by <a href="https://github.com/soybella/e-commerce-site" target="_blank">Isabella Lizarde</a>
+      >. Coded by
+      <a href="https://github.com/soybella/e-commerce-site" target="_blank"
+        >Isabella Lizarde</a
+      >
     </footer>
   </body>
 </html>

@@ -295,10 +295,8 @@ footer {
 
 .product-prices {
   font-weight: bold;
-}
-
-.product-prices span {
   margin-inline-end: 0.5rem;
+  margin-block-end: 0.5rem;
 }
 
 .discount-price {
@@ -355,7 +353,8 @@ footer {
 }
 
 .product-add-to-cart {
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
   position: relative;
   min-height: 3.5rem;
   min-inline-size: 100%;
@@ -363,8 +362,8 @@ footer {
 }
 
 .button-add-to-cart {
-  min-inline-size: 65%;
-  padding-inline: 2.3rem;
+  min-inline-size: 100%;
+  margin-inline-start: auto;
   background: var(--orange-accent-color);
   font-weight: bold;
   box-shadow: var(--box-shadow-small);
@@ -711,7 +710,7 @@ footer {
   }
 
   .product-add-to-cart {
-    flex-direction: column;
+    grid-template-columns: 2fr;
     align-items: center;
     gap: 1.2rem;
   }

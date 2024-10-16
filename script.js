@@ -122,10 +122,7 @@ function handleAddToCart() {
 
   let productDiscountPriceNumber = parseFloat(discountPrice);
 
-  console.log(productDiscountPriceNumber);
-
   let quantityPriceTotal = currentProductQuantity * productDiscountPriceNumber;
-  console.log(quantityPriceTotal);
 
   if (Number.isInteger(quantityPriceTotal)) {
     document.querySelector(
@@ -155,7 +152,6 @@ function handleDeleteProductButton() {
 function handleMinusQuantityButton() {
   if (currentProductQuantity > 0) {
     currentProductQuantity--;
-    console.log(currentProductQuantity);
     quantityNumber.innerHTML = currentProductQuantity;
     quantityNumberTotal.innerHTML = `x ${currentProductQuantity}`;
   }
@@ -163,7 +159,6 @@ function handleMinusQuantityButton() {
 
 function handleAddQuantityButton() {
   currentProductQuantity++;
-  console.log(currentProductQuantity);
   quantityNumber.innerHTML = currentProductQuantity;
   quantityNumberTotal.innerHTML = `x ${currentProductQuantity}`;
 }
