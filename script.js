@@ -35,6 +35,13 @@ let shoppingCartFilledBasket = document.querySelector(
 let shoppingCartCheckoutButton = document.querySelector(
   ".shopping-cart-checkout-button "
 );
+let shoppingCartThumbnail = document.querySelector(".product-thumbnail-cart");
+shoppingCartThumbnail.addEventListener("click", handleAddToCart());
+
+// let shoppingCartThumbnailSrc = document.querySelector(
+//   ".shopping-cart-thumbnail"
+// );
+// shoppingCartThumbnailSrc.addEventListener("click", handleAddToCart());
 
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
@@ -107,7 +114,13 @@ function checkScreenWidth() {
 checkScreenWidth();
 window.addEventListener("resize", checkScreenWidth);
 
+// add thumbnail image when add to cart button is clicked
 function handleAddToCart() {
+  let shoppingCartThumbnailSrc = document.querySelector(
+    ".shopping-cart-thumbnail"
+  );
+  shoppingCartThumbnail.src =
+    shoppingCartThumbnailSrc.getAttribute("data-large-src");
   shoppingCartBasket.classList.remove("hidden");
   shoppingCartEmptyBasket.classList.add("hidden");
   shoppingCartFilledBasket.classList.remove("hidden");
