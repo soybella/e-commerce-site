@@ -6,6 +6,9 @@ let navBarIcon = document.querySelector(".nav-menu-icon");
 let productThumbnailSmall = document.querySelectorAll(".photo");
 let productThumbnailSmallLightBox =
   document.querySelectorAll(".photo-light-box");
+let productThumbnailSmallImgSrc = document.querySelectorAll(
+  ".product-thumbnail-small"
+);
 let productThumbnailMain = document.querySelector(".product-thumbnail-main");
 let productThumbnailMainLightbox = document.querySelector(
   ".light-box .product-thumbnail-main"
@@ -42,6 +45,7 @@ shoppingCartThumbnail.addEventListener("click", handleAddToCart());
 //   ".shopping-cart-thumbnail"
 // );
 // shoppingCartThumbnailSrc.addEventListener("click", handleAddToCart());
+// TO DO NEXT, IF LIGHT BOX NEXT OR PREVIOUS BUTTON CLICKED, CHANGE HOVER EFFECT
 
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
@@ -75,6 +79,18 @@ previousButtonLightBox.addEventListener("click", () => {
   if (currentPhotoIndex > 0) {
     currentPhotoIndex--;
     updateLightboxPhoto();
+    console.log("previous button");
+    productThumbnailSmallLightBox.forEach((thumbnail) => {
+      thumbnail.classList.remove("active", "no-hover");
+      // thumbnail.classList.add("active", "no-hover");
+
+      if (
+        thumbnail.getAttribute("data-large-src") ===
+        productThumbnailMainLightbox.getAttribute("data-large-src")
+      ) {
+        thumbnail.classList.add("active", "no-hover");
+      }
+    });
   }
 });
 
@@ -82,6 +98,27 @@ nextButtonLightBox.addEventListener("click", () => {
   if (currentPhotoIndex < productThumbnailSmallLightBox.length - 1) {
     currentPhotoIndex++;
     updateLightboxPhoto();
+
+    // how to make the two sources equal eachother?
+    console.log(productThumbnailMainLightbox.getAttribute("data-large-src"));
+    productThumbnailSmallLightBox.forEach((thumbnail) => {
+      console.log(thumbnail.getAttribute("data-large-src"));
+      // thumbnail.classList.remove("active", "no-hover");
+      if (
+        productThumbnailMainLightbox.src ===
+        thumbnail.getAttribute("data-large-src")
+      ) {
+        thumbnail.classList.add("active", "no-hover");
+      }
+    });
+    // productThumbnailSmallLightBox.forEach((thumbnail) => {
+    // thumbnail.classList.remove("active", "no-hover");
+    // console.log();
+    // thumbnail.classList.add("active", "no-hover");
+    // if (thumbnail.src === productThumbnailMainLightbox.src) {
+    //   thumbnail.classList.add("active", "no-hover");
+    // }
+    // });
   }
 });
 
