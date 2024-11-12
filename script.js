@@ -40,7 +40,7 @@ let shoppingCartCheckoutButton = document.querySelector(
   ".shopping-cart-checkout-button "
 );
 let shoppingCartThumbnail = document.querySelector(".product-thumbnail-cart");
-shoppingCartThumbnail.addEventListener("click", handleAddToCart());
+shoppingCartThumbnail.addEventListener("click", handleAddToCart);
 
 productThumbnailSmall.forEach((thumbnail, index) => {
   thumbnail.addEventListener("click", () => {
@@ -123,13 +123,12 @@ function handleAddToCart() {
   let shoppingCartThumbnailSrc = document.querySelector(
     ".shopping-cart-thumbnail"
   );
-  // Fix here why is the bubble showing 0? it shouldnn't show up until the cart is filled
   shoppingCartThumbnail.src =
     shoppingCartThumbnailSrc.getAttribute("data-large-src");
   shoppingCartBasket.classList.remove("hidden");
   shoppingCartEmptyBasket.classList.add("hidden");
-  shoppingCartFilledBasket.classList.remove("hidden");
   shoppingCartFilledBasket.innerHTML = currentProductQuantity;
+  shoppingCartFilledBasket.classList.remove("hidden");
   shoppingCartCheckoutButton.classList.remove("hidden");
 
   productDiscountPrice.innerHTML = `$${productDiscountPrice.getAttribute(
