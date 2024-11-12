@@ -123,6 +123,7 @@ function handleAddToCart() {
   let shoppingCartThumbnailSrc = document.querySelector(
     ".shopping-cart-thumbnail"
   );
+  // Fix here why is the bubble showing 0? it shouldnn't show up until the cart is filled
   shoppingCartThumbnail.src =
     shoppingCartThumbnailSrc.getAttribute("data-large-src");
   shoppingCartBasket.classList.remove("hidden");
@@ -197,7 +198,6 @@ function handleCloseNavBar() {
 
 function handleProductThumbnailSmall(event) {
   let clickedThumbnail = event.target;
-  console.log(clickedThumbnail);
   let newMainThumbnail = clickedThumbnail.getAttribute("data-large-src");
 
   if (productThumbnailMain && newMainThumbnail) {
@@ -206,13 +206,10 @@ function handleProductThumbnailSmall(event) {
     });
     clickedThumbnail.classList.add("active", "no-hover");
 
-    productThumbnailSmallLightBox.forEach((thumbnail) => {
-      thumbnail.classList.remove("active", "no-hover");
-      if (
-        clickedThumbnail.classList.contains("active") &&
-        thumbnail.getAttribute("data-large-src") === newMainThumbnail
-      ) {
-        thumbnail.classList.add("active", "no-hover");
+    thumbnailWrapperLightBox.forEach((wrapper) => {
+      wrapper.classList.remove("active", "no-hover");
+      if (newMainThumbnail === wrapper.getAttribute("data-large-src")) {
+        wrapper.classList.add("active", "no-hover");
       }
     });
 
